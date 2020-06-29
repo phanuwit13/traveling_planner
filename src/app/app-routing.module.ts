@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'detail',
+    loadChildren: () => import('./modals/detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'edit-place',
+    loadChildren: () => import('./modals/edit-place/edit-place.module').then( m => m.EditPlacePageModule)
+  },
 ];
 
 @NgModule({
