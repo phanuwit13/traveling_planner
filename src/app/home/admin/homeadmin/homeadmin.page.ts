@@ -1,15 +1,114 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpService } from "../../../services/http.service";
+import { Component, OnInit, HostListener } from "@angular/core";
+import { EditPlacePage } from "../../../modals/edit-place/edit-place.page";
+import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { ModalController } from "@ionic/angular";
 
 @Component({
-  selector: 'app-homeadmin',
-  templateUrl: './homeadmin.page.html',
-  styleUrls: ['./homeadmin.page.scss'],
+  selector: "app-homeadmin",
+  templateUrl: "./homeadmin.page.html",
+  styleUrls: ["./homeadmin.page.scss"],
 })
 export class HomeadminPage implements OnInit {
+  public form_planning: FormGroup;
+  public place: Array<any> = null;
+  public key = new FormControl();
+  public categoryData: Array<any> = null;
+  list = [];
+  constructor(
+    private http: HttpService,
+    private modalController: ModalController,
+    private formBuilder: FormBuilder
+  ) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  @HostListener("document:ionBackButton", ["$event"])
+  private async overrideHardwareBackAction($event: any) {
+    await this.modalController.dismiss();
+    this.http.removeList(this.list[0]);
   }
 
+  ngOnInit() {
+    this.http.list$.subscribe((list) => (this.list = list));
+    this.getPlace();
+    this.form_planning = this.formBuilder.group({
+      placeNo: "",
+      categoryNo: "",
+      point_start: "",
+    });
+    this.getCategory();
+  }
+  onload() {}
+  async getPlace() {
+    let httpRespon: any = await this.http.post("getPlace");
+    console.log(httpRespon);
+    if (httpRespon.response.success) {
+      this.place = httpRespon.response.data;
+    } else {
+      this.place = httpRespon.response.message;
+    }
+  }
+
+  async getPlaceSearch() {
+    let formData = new FormData();
+    console.log(this.key.value);
+    formData.append("key", this.key.value);
+    let httpRespon: any = await this.http.post("getPlaceSearch", formData);
+    console.log(httpRespon);
+    if (httpRespon.response.success) {
+      this.place = await httpRespon.response.data;
+    } else {
+      this.place = null;
+    }
+  }
+  //รีเฟช
+  doRefresh(event) {
+    console.log("Begin async operation");
+    setTimeout(() => {
+      console.log("Async operation has ended");
+      this.getPlace();
+      event.target.complete();
+    }, 1000);
+    this.place = null;
+    this.key.setValue("");
+  }
+  //เปิดโมเดล
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: EditPlacePage,
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if (data.dismissed) {
+      this.getPlace();
+    }
+  }
+
+  async addItem(item) {
+    this.http.addNewList(item);
+  }
+
+  async getPlaceCategory() {
+    let formData = new FormData();
+    formData.append(
+      "categoryNo",
+      this.form_planning.controls["categoryNo"].value
+    );
+    console.log(this.form_planning.controls["categoryNo"].value);
+    let httpRespon: any = await this.http.post("getPlaceCategory", formData);
+    console.log(httpRespon);
+    if (httpRespon.response.success) {
+      this.place = await httpRespon.response.data;
+    } else {
+      this.place = null;
+    }
+  }
+  async getCategory() {
+    let httpRespon: any = await this.http.post("getCategory");
+    console.log(httpRespon);
+    if (httpRespon.response.success) {
+      this.categoryData = await httpRespon.response.data;
+    } else {
+      this.categoryData = null;
+    }
+  }
 }

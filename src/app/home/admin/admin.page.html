@@ -1,9 +1,55 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>admin</ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-icon name="chevron-back-outline">Black</ion-icon> -->
+      <ion-back-button [routerLink]="['/home']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Admin</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="false">
+  <div id="container" text-center>
+    <form [formGroup]="form_user">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <ion-icon class="lg" name="person-outline"></ion-icon>
+            </div>
+            <div padding>
+              <ion-item>
+                <ion-input
+                  formControlName="username"
+                  placeholder="Username"
+                  required
+                ></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input
+                  formControlName="password"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                ></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <section class="full-width">
+    <ion-button
+      mode="ios"
+      expand="block"
+      color="primary"
+      (click)="onLogin()"
+      [disabled]="form_user.invalid"
+      >Login</ion-button
+    >
+  </section>
+</ion-footer>

@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>map</ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-icon name="chevron-back-outline">Black</ion-icon> -->
+      <ion-back-button [routerLink]="['/home']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Map</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div id="map_canvas2"></div>
+  <div id="container"></div>
 </ion-content>
+
+<ion-footer>
+  <section class="full-width">
+    <ion-button mode="ios" expand="block" color="primary" (click)="myLocation()"
+      >Location</ion-button
+    >
+  </section>
+</ion-footer>

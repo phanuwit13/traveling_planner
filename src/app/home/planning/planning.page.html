@@ -1,9 +1,116 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>planning</ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-icon name="chevron-back-outline">Black</ion-icon> -->
+      <ion-back-button
+        (click)="closeList()"
+        [routerLink]="['/home']"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Planning</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <form
+      [formGroup]="form_planning"
+      style="padding-top: 15px; font-size: 18px;"
+    >
+      <ion-label slot="start">Start Point</ion-label>
+      <ion-item color="">
+        <ion-label>Category</ion-label>
+        <ion-select
+          type="md"
+          formControlName="categoryNo"
+          interface="action-sheet"
+          (ionChange)="getPlaceCategory()"
+        >
+          <ion-select-option
+            *ngFor="let item of categoryData"
+            [value]="item.categoryNo"
+            >{{item.categoryTH}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
 
-<ion-content>
+      <ion-item color="">
+        <ion-label>Place</ion-label>
+        <ion-select
+          type="md"
+          formControlName="point_start"
+          interface="action-sheet"
+        >
+          <ion-select-option *ngFor="let item of placeData " [value]="item"
+            >{{item.placeTH}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
 
+      <ion-item
+        color=""
+        *ngIf="this.form_planning.controls['point_start'].value != ''"
+      >
+        <ion-label
+          >{{'Start'+"
+          "+this.form_planning.controls['point_start'].value.placeTH}}</ion-label
+        >
+      </ion-item>
+
+      <div style="padding-top: 15px;">
+        <ion-label>Please select places to go</ion-label>
+      </div>
+      <ion-item color="">
+        <ion-label>Category</ion-label>
+        <ion-select
+          type="md"
+          formControlName="categoryNo"
+          interface="action-sheet"
+          (ionChange)="getPlaceCategory()"
+        >
+          <ion-select-option
+            *ngFor="let item of categoryData"
+            [value]="item.categoryNo"
+            >{{item.categoryTH}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item color="">
+        <ion-label>Place</ion-label>
+        <ion-select
+          type="md"
+          formControlName="placeNo"
+          interface="action-sheet"
+          (ionChange)="addPlace()"
+        >
+          <ion-select-option *ngFor="let item of placeData" [value]="item"
+            >{{item.placeTH}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item-sliding *ngFor="let x of no ; let i = index">
+        <ion-item color="">
+          <ion-label>{{(i+1)+". "+x.placeTH}}</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="delPlace(x)"
+            >Delete</ion-item-option
+          >
+        </ion-item-options>
+      </ion-item-sliding>
+    </form>
+  </div>
 </ion-content>
+<ion-footer>
+  <section class="full-width">
+    <ion-button
+      mode="ios"
+      expand="block"
+      color="primary"
+      (click)="testSort() "
+      [disabled]="this.no.length ==0 || this.form_planning.controls['point_start'].value =='' "
+      >Plan</ion-button
+    >
+  </section>
+</ion-footer>

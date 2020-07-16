@@ -1,0 +1,23 @@
+$bg: #ffffff;
+
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+.ic {
+  font-size: 25px;
+}
+.tl {
+  font-size: 20px;
+  font-weight: bold;
+}
+.bt {
+  font-size: 17px;
+}

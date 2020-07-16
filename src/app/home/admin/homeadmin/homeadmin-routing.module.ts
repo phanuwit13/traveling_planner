@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { HomeadminPage } from './homeadmin.page';
+import { HomeadminPage } from "./homeadmin.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomeadminPage
+    path: "",
+    component: HomeadminPage,
   },
   {
-    path: 'addplace',
-    loadChildren: () => import('./addplace/addplace.module').then( m => m.AddplacePageModule)
-  }
+    path: "addplace",
+    loadChildren: () =>
+      import("./addplace/addplace.module").then((m) => m.AddplacePageModule),
+  },
 ];
 
 @NgModule({

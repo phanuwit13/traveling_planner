@@ -1,9 +1,24 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <ion-title>Modal Content</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content mode="ios" fullscreen>
+  <ion-card>
+    <img
+      src="https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA"
+    />
+    <ion-card-header>
+      <ion-card-subtitle>{{list[0].categoryTH}}</ion-card-subtitle>
+      <ion-card-title style="font-size: 20px;"
+        >{{list[0].placeTH}}</ion-card-title
+      >
+    </ion-card-header>
+    <ion-card-content>
+      {{list[0].detail}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

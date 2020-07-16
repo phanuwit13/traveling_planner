@@ -1,9 +1,70 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addplace</ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-icon name="chevron-back-outline">Black</ion-icon> -->
+      <ion-back-button
+        [routerLink]="['/home/admin/homeadmin']"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Place</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content mode="ios" [fullscreen]="false">
+  <div id="map_canvas"></div>
+  <div id="container" text-center>
+    <form action="" [formGroup]="form_place">
+      <div style="padding: 5%;">
+        <span class="tl">Add Place</span>
+      </div>
+      <ion-item lines="none">
+        <ion-label>ชื่อสถานที่</ion-label>
+      </ion-item>
 
-<ion-content>
+      <ion-item>
+        <ion-label>TH :</ion-label>
+        <ion-input formControlName="placeTH"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>EN :</ion-label>
+        <ion-input formControlName="placeEN"></ion-input>
+      </ion-item>
+      <ion-item color="">
+        <ion-label>ประเภท</ion-label>
+        <ion-select
+          type="md"
+          formControlName="categoryNo"
+          interface="action-sheet"
+        >
+          <ion-select-option
+            *ngFor="let item of categoryData"
+            [value]="item.categoryNo"
+            >{{item.categoryTH}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
 
+      <ion-item>
+        <ion-label>รายละเอียด</ion-label>
+        <ion-textarea
+          formControlName="detail"
+          rows="6"
+          cols="20"
+          placeholder="รายละเอียดของสถานที่ท่องเที่ยว..."
+        ></ion-textarea>
+      </ion-item>
+    </form>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <section class="full-width">
+    <ion-button
+      mode="ios"
+      expand="block"
+      color="primary"
+      (click)="setPlace()"
+      [disabled]="form_place.invalid"
+      >Add</ion-button
+    >
+  </section>
+</ion-footer>

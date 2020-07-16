@@ -1,9 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-icon name="chevron-back-outline">Black</ion-icon> -->
+      <ion-back-button [routerLink]="['/home']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios" [fullscreen]="true">
+  <ion-refresher mode="md" slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
+  <div id="container">
+    <ion-searchbar
+      [formControl]="key"
+      (ionChange)="getPlaceSearch()"
+    ></ion-searchbar>
+    <ion-list>
+      <ion-list-header>
+        สถานที่ท่องเที่ยวใน อำเภอเมืองนครราชสีมา
+      </ion-list-header>
+
+      <ion-item
+        *ngFor="let item of place ;let i = index"
+        (click)="openModal();addItem(item)"
+      >
+        <!-- <ion-avatar slot="start">
+          <img
+            src="https://i.picsum.photos/id/496/200/200.jpg?hmac=Asy6Q8R1Y6wu0nrV_ymC5JGqktniSVnGqoYvNcHdzBI"
+          />
+        </ion-avatar> -->
+        <ion-thumbnail slot="start">
+          <img
+            src="https://i.picsum.photos/id/496/200/200.jpg?hmac=Asy6Q8R1Y6wu0nrV_ymC5JGqktniSVnGqoYvNcHdzBI"
+          />
+        </ion-thumbnail>
+
+        <ion-label>
+          <h2>{{item.placeTH}}</h2>
+          <h3>{{item.categoryTH}}</h3>
+          <p>{{item.detail}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

@@ -1,9 +1,67 @@
-<ion-header>
+<ion-header mode="ios" translucent>
   <ion-toolbar>
-    <ion-title>edit-place</ion-title>
+    <ion-title>Edit Place</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content mode="ios" fullscreen>
+  <form action="" [formGroup]="form_place">
+    <ion-card>
+      <img
+        src="https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA"
+      />
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-item color="">
+            <ion-label>ประเภท</ion-label>
+            <ion-select
+              type="md"
+              formControlName="categoryNo"
+              interface="action-sheet"
+            >
+              <ion-select-option
+                *ngFor="let item of categoryData"
+                [value]="item.categoryNo"
+                >{{item.categoryTH}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item></ion-card-subtitle
+        >
+        <ion-item lines="none">
+          <ion-label>ชื่อสถานที่</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>TH :</ion-label>
+          <ion-input formControlName="placeTH"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>EN :</ion-label>
+          <ion-input formControlName="placeTH"></ion-input>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>รายละเอียด</ion-label>
+          <ion-textarea
+            formControlName="detail"
+            rows="3"
+            cols="50"
+            placeholder="รายละเอียดของสถานที่ท่องเที่ยว..."
+          ></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </form>
+  <div padding style="padding: 1%;">
+    <ion-button
+      size="large"
+      type="submit"
+      expand="block"
+      (click)="setPlaceEdit()"
+      [disabled]="form_place.invalid"
+      >Save</ion-button
+    >
+  </div>
 </ion-content>
