@@ -16,10 +16,20 @@
       <div style="padding: 5%;">
         <span class="tl">Add Place</span>
       </div>
+      <img src="assets/img/icons-image.png" height="200" *ngIf="!imgURL" />
+      <img [src]="imgURL" height="200" *ngIf="imgURL" />
+      <ion-item>
+        <ion-label>รูปภาพ :</ion-label>
+        <ion-input
+          type="file"
+          accept="image/*"
+          id="upload"
+          (change)="onFileSelected($event)"
+        ></ion-input>
+      </ion-item>
       <ion-item lines="none">
         <ion-label>ชื่อสถานที่</ion-label>
       </ion-item>
-
       <ion-item>
         <ion-label>TH :</ion-label>
         <ion-input formControlName="placeTH"></ion-input>

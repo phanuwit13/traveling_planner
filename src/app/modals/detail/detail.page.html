@@ -1,23 +1,32 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>Modal Content</ion-title>
+    <ion-title>Detail</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content mode="ios" fullscreen>
-  <ion-card>
+<ion-content mode="md" fullscreen>
+  <ion-card *ngIf="list[0] !=null">
     <img
+      *ngIf="list[0].img==''"
+      height="400"
       src="https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA"
     />
+    <img
+      *ngIf="list[0].img !=''"
+      height="400"
+      src="http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{list[0].img}}"
+    />
     <ion-card-header>
-      <ion-card-subtitle>{{list[0].categoryTH}}</ion-card-subtitle>
-      <ion-card-title style="font-size: 20px;"
+      <ion-card-subtitle *ngIf="list[0] !=null"
+        >{{list[0].categoryTH}}</ion-card-subtitle
+      >
+      <ion-card-title style="font-size: 20px;" *ngIf="list[0] !=null"
         >{{list[0].placeTH}}</ion-card-title
       >
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content *ngIf="list[0] !=null">
       {{list[0].detail}}
     </ion-card-content>
   </ion-card>

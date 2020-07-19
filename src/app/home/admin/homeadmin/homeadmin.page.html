@@ -17,16 +17,18 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="start">
-      <ion-button size="small" color="dark" [routerLink]="['addplace']"
+      <ion-button size="default" color="dark" [routerLink]="['addplace']"
         >สถานที่</ion-button
       >
-      <ion-button size="small" color="dark">ประเภท</ion-button>
+      <ion-button size="default" color="dark" [routerLink]="['addcategory']"
+        >ประเภท</ion-button
+      >
     </ion-fab-list>
   </ion-fab>
   <div id="container">
     <form action="" [formGroup]="form_planning">
       <ion-item color="">
-        <ion-label>Category</ion-label>
+        <ion-label>ประเภท</ion-label>
         <ion-select
           type="md"
           formControlName="categoryNo"
@@ -46,23 +48,16 @@
         (ionChange)="getPlaceSearch()"
       ></ion-searchbar>
     </form>
-    <ion-list>
-      <ion-list-header>
-        สถานที่ท่องเที่ยวใน อำเภอเมืองนครราชสีมา
-      </ion-list-header>
-
-      <ion-item
-        *ngFor="let item of place ;let i = index"
-        (click)="openModal();addItem(item)"
-      >
-        <!-- <ion-avatar slot="start">
-          <img
-            src="https://i.picsum.photos/id/496/200/200.jpg?hmac=Asy6Q8R1Y6wu0nrV_ymC5JGqktniSVnGqoYvNcHdzBI"
-          />
-        </ion-avatar> -->
+    <ion-item-sliding *ngFor="let item of place ;let i = index">
+      <ion-item>
         <ion-thumbnail slot="start">
           <img
+            *ngIf="item.img ==''"
             src="https://i.picsum.photos/id/496/200/200.jpg?hmac=Asy6Q8R1Y6wu0nrV_ymC5JGqktniSVnGqoYvNcHdzBI"
+          />
+          <img
+            *ngIf="item.img !=''"
+            src="http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{item.img}}"
           />
         </ion-thumbnail>
 
@@ -72,6 +67,21 @@
           <p>{{item.detail}}</p>
         </ion-label>
       </ion-item>
-    </ion-list>
+      <ion-item-options>
+        <ion-item-option
+          style="color: #ffffff;"
+          (click)="openModal();addItem(item)"
+          color="warning"
+        >
+          <ion-icon slot="start" name="color-wand"></ion-icon>
+          แก้ไข
+        </ion-item-option>
+        <ion-item-option (click)="delPlace(item.placeNo)" color="danger">
+          <ion-icon slot="start" name="trash-bin"></ion-icon>
+
+          ลบ
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </div>
 </ion-content>

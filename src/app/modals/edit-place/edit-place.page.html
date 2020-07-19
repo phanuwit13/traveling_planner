@@ -6,29 +6,44 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content mode="ios" fullscreen>
+<ion-content mode="ios">
   <form action="" [formGroup]="form_place">
     <ion-card>
       <img
+        *ngIf="this.form_place.controls['img'].value =='' && !imgURL"
+        height="400"
         src="https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA"
       />
+      <img
+        *ngIf="this.form_place.controls['img'].value !='' && !imgURL"
+        height="400"
+        src="http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{this.form_place.controls['img'].value}}"
+      />
+      <img [src]="imgURL" height="400" *ngIf="imgURL" />
       <ion-card-header>
-        <ion-card-subtitle>
-          <ion-item color="">
-            <ion-label>ประเภท</ion-label>
-            <ion-select
-              type="md"
-              formControlName="categoryNo"
-              interface="action-sheet"
+        <ion-item>
+          <ion-label>รูปภาพ :</ion-label>
+          <ion-input
+            type="file"
+            accept="image/*"
+            id="upload"
+            (change)="onFileSelected($event)"
+          ></ion-input>
+        </ion-item>
+        <ion-item color="">
+          <ion-label>ประเภท</ion-label>
+          <ion-select
+            type="md"
+            formControlName="categoryNo"
+            interface="action-sheet"
+          >
+            <ion-select-option
+              *ngFor="let item of categoryData"
+              [value]="item.categoryNo"
+              >{{item.categoryTH}}</ion-select-option
             >
-              <ion-select-option
-                *ngFor="let item of categoryData"
-                [value]="item.categoryNo"
-                >{{item.categoryTH}}</ion-select-option
-              >
-            </ion-select>
-          </ion-item></ion-card-subtitle
-        >
+          </ion-select>
+        </ion-item>
         <ion-item lines="none">
           <ion-label>ชื่อสถานที่</ion-label>
         </ion-item>
@@ -38,7 +53,7 @@
         </ion-item>
         <ion-item>
           <ion-label>EN :</ion-label>
-          <ion-input formControlName="placeTH"></ion-input>
+          <ion-input formControlName="placeEN"></ion-input>
         </ion-item>
       </ion-card-header>
       <ion-card-content>
@@ -46,7 +61,7 @@
           <ion-label>รายละเอียด</ion-label>
           <ion-textarea
             formControlName="detail"
-            rows="3"
+            rows="4"
             cols="50"
             placeholder="รายละเอียดของสถานที่ท่องเที่ยว..."
           ></ion-textarea>
@@ -54,14 +69,15 @@
       </ion-card-content>
     </ion-card>
   </form>
-  <div padding style="padding: 1%;">
+</ion-content>
+<ion-footer>
+  <section class="full-width">
     <ion-button
-      size="large"
-      type="submit"
+      mode="ios"
       expand="block"
+      color="primary"
       (click)="setPlaceEdit()"
-      [disabled]="form_place.invalid"
       >Save</ion-button
     >
-  </div>
-</ion-content>
+  </section>
+</ion-footer>

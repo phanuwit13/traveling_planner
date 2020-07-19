@@ -12,13 +12,20 @@
 </ion-header>
 <ion-content mode="md" [fullscreen]="false">
   <div id="container">
+    <div class="detail">
+      <div class="box left">
+        <div class="one"><ion-icon name="car-sport-sharp"></ion-icon></div>
+        <div class="two"><h3 style="color: white;">{{list[2]}} กม.</h3></div>
+      </div>
+      <div class="box right">
+        <div class="one"><ion-icon name="logo-usd"></ion-icon></div>
+        <div class="two" *ngIf="list != []">
+          <h3 style="color: white;">{{list[1]}} บาท</h3>
+        </div>
+      </div>
+    </div>
     <div *ngFor="let item of list[0] ;let i = index">
       <ion-card>
-        <!-- <ion-card-header>
-          <ion-card-subtitle>ลำดับที่ {{i+1}}</ion-card-subtitle>
-          <ion-card-title>ลำดับที่ {{i+1}}</ion-card-title>
-        </ion-card-header> -->
-
         <ion-item>
           <ion-thumbnail class="img" slot="start">
             <img
@@ -32,21 +39,12 @@
           </ion-label>
         </ion-item>
       </ion-card>
-      <!-- <ion-icon
-        *ngIf="i+1 != asd.length "
-        style="font-size: 30px;"
-        name="chevron-down-outline"
-      ></ion-icon> -->
+
       <ion-icon
         *ngIf="i+1 != list[0].length "
         style="font-size: 30px; color: #4c8dff;"
         name="arrow-down-outline"
       ></ion-icon>
-      <!-- <ion-icon
-        *ngIf="i+1 != asd.length "
-        style="font-size: 30px;"
-        name="caret-down-outline"
-      ></ion-icon> -->
     </div>
   </div>
 </ion-content>

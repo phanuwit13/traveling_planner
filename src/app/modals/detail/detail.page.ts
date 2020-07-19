@@ -8,7 +8,7 @@ import { ModalController, Platform } from "@ionic/angular";
   styleUrls: ["./detail.page.scss"],
 })
 export class DetailPage implements OnInit {
-  list = [];
+  list: Array<any> = [];
   constructor(
     private modalController: ModalController,
     private http: HttpService
@@ -19,9 +19,8 @@ export class DetailPage implements OnInit {
   }
 
   async closeModal() {
-    await this.modalController.dismiss({
+    this.modalController.dismiss({
       dismissed: true,
     });
-    this.http.removeList(this.list[0]);
   }
 }

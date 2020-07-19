@@ -10,15 +10,15 @@
     <ion-title>Planning</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="false">
   <div id="container">
     <form
       [formGroup]="form_planning"
       style="padding-top: 15px; font-size: 18px;"
     >
-      <ion-label slot="start">Start Point</ion-label>
+      <ion-label slot="start">จุดเริ่มต้น</ion-label>
       <ion-item color="">
-        <ion-label>Category</ion-label>
+        <ion-label>ประเภท</ion-label>
         <ion-select
           type="md"
           formControlName="categoryNo"
@@ -34,7 +34,7 @@
       </ion-item>
 
       <ion-item color="">
-        <ion-label>Place</ion-label>
+        <ion-label>สถานที่</ion-label>
         <ion-select
           type="md"
           formControlName="point_start"
@@ -51,16 +51,16 @@
         *ngIf="this.form_planning.controls['point_start'].value != ''"
       >
         <ion-label
-          >{{'Start'+"
+          >{{'จุดเริ่มต้น'+"
           "+this.form_planning.controls['point_start'].value.placeTH}}</ion-label
         >
       </ion-item>
 
       <div style="padding-top: 15px;">
-        <ion-label>Please select places to go</ion-label>
+        <ion-label>โปรดเลือกสถานที่ ที่ต้องการไป</ion-label>
       </div>
       <ion-item color="">
-        <ion-label>Category</ion-label>
+        <ion-label>ประเภท</ion-label>
         <ion-select
           type="md"
           formControlName="categoryNo"
@@ -76,7 +76,7 @@
       </ion-item>
 
       <ion-item color="">
-        <ion-label>Place</ion-label>
+        <ion-label>สถานที่</ion-label>
         <ion-select
           type="md"
           formControlName="placeNo"

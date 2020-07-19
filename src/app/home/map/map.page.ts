@@ -25,19 +25,22 @@ export class MapPage implements OnInit {
   GOOGLE = { lat: 37.422476, lng: -122.08425 };
   constructor(
     public platform: Platform,
-    private _ngZone: NgZone,
     private http: HttpService,
     public loadingCtrl: LoadingController,
     private geolocation: Geolocation
   ) {}
+
   @HostListener("document:ionBackButton", ["$event"])
   private async overrideHardwareBackAction($event: any) {
-    this.http.removeList(this.list[0]);
+    this.list.forEach((item) => {
+      this.http.removeList(item);
+    });
   }
+
   async ngOnInit() {
     await this.http.list$.subscribe((list) => (this.list = list));
     this.loadmap();
-    console.log(this.list);
+    //console.log(this.list);
   }
 
   async loadmap() {
@@ -47,7 +50,7 @@ export class MapPage implements OnInit {
     await this.loading.present();
 
     this.map = new google.maps.Map(document.getElementById("map_canvas2"), {
-      zoom: 15,
+      zoom: 16,
       center: { lat: 14.9736915, lng: 102.0827157 },
     });
     this.marker = await new google.maps.Marker({
@@ -55,6 +58,7 @@ export class MapPage implements OnInit {
       animation: google.maps.Animation.DROP,
       position: { lat: 14.9736915, lng: 102.0827157 },
     });
+    this.myLocation();
     this.loading.dismiss();
   }
   async myLocation() {
@@ -65,7 +69,7 @@ export class MapPage implements OnInit {
     this.geolocation.getCurrentPosition().then(async (resp) => {
       this.currentLocation.lat = resp.coords.latitude;
       this.currentLocation.lng = resp.coords.longitude;
-      console.log(this.currentLocation);
+      //console.log(this.currentLocation);
       this.marker.setPosition(this.currentLocation);
       if (this.list.length != 0) {
         this.marker.setMap(null);
@@ -97,7 +101,7 @@ export class MapPage implements OnInit {
         });
       }
     }
-    console.log(waypts);
+    //console.log(waypts);
 
     this.directionsService.route(
       {
@@ -113,10 +117,12 @@ export class MapPage implements OnInit {
       async (response, status) => {
         if (status === "OK") {
           this.directionsRenderer.setDirections(response);
-          console.log(response);
-          this.http.removeList(this.list[0]);
+          //console.log(response);
+          this.list.forEach((item) => {
+            this.http.removeList(item);
+          });
         } else {
-          console.log(status);
+          //console.log(status);
         }
       }
     );

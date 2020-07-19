@@ -2,8 +2,8 @@ import Swal from "sweetalert2";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { HttpService } from "./../../services/http.service";
 import { Component, OnInit } from "@angular/core";
-import { ModalController } from "@ionic/angular";
-
+import { ModalController, LoadingController } from "@ionic/angular";
+import Compressor from "compressorjs";
 @Component({
   selector: "app-edit-place",
   templateUrl: "./edit-place.page.html",
@@ -13,11 +13,17 @@ export class EditPlacePage implements OnInit {
   list = [];
   public form_place: FormGroup;
   public categoryData: Array<any> = null;
-
+  loading: any;
+  public fileName = null;
+  public selectedFile: File = null;
+  public lastNameFile: Array<any> = [];
+  imagePath: any;
+  imgURL: any;
   constructor(
     private modalController: ModalController,
     private http: HttpService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController
   ) {}
 
   async ngOnInit() {
@@ -27,10 +33,16 @@ export class EditPlacePage implements OnInit {
       placeTH: ["", Validators.required],
       placeEN: ["", Validators.required],
       detail: "",
+      img: "",
     });
-    await this.http.list$.subscribe((list) => (this.list = list));
-    await this.getCategory();
-    this.setEdit();
+    this.loading = await this.loadingCtrl.create({
+      message: "Please wait...",
+    });
+    await this.loading.present();
+    this.http.list$.subscribe((list) => (this.list = list));
+    this.getCategory();
+    await this.setEdit();
+    this.loading.dismiss();
   }
   async setEdit() {
     this.form_place.controls["placeNo"].setValue(this.list[0].placeNo);
@@ -38,16 +50,17 @@ export class EditPlacePage implements OnInit {
     this.form_place.controls["placeTH"].setValue(this.list[0].placeTH);
     this.form_place.controls["placeEN"].setValue(this.list[0].placeEN);
     this.form_place.controls["detail"].setValue(this.list[0].detail);
+    this.form_place.controls["img"].setValue(this.list[0].img);
+    //console.log(this.form_place.controls["img"].value);
   }
   async closeModal() {
     await this.modalController.dismiss({
       dismissed: true,
     });
-    this.http.removeList(this.list[0]);
   }
   async getCategory() {
     let httpRespon: any = await this.http.post("getCategory");
-    console.log(httpRespon);
+    //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.categoryData = await httpRespon.response.data;
     } else {
@@ -71,10 +84,12 @@ export class EditPlacePage implements OnInit {
         let formData = new FormData();
         Object.keys(this.form_place.value).forEach((key) => {
           formData.append(key, this.form_place.value[key]);
-          console.log(key + " : " + this.form_place.value[key]);
         });
+        formData.append("img", this.fileName);
+        formData.append("image", this.selectedFile, this.fileName);
+        //console.log(this.selectedFile);
         let httpRespon: any = await this.http.post("setPlaceEdit", formData);
-        console.log(httpRespon);
+        //console.log(httpRespon);
         if (httpRespon.response.success) {
           await Swal.fire("สำเร็จ", httpRespon.response.message, "success");
           this.closeModal();
@@ -87,5 +102,27 @@ export class EditPlacePage implements OnInit {
       ) {
       }
     });
+  }
+  async onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+    //console.log(event.target.files);
+    //console.log(this.selectedFile);
+    if (event.target.files.length === 0) return;
+    this.lastNameFile = this.selectedFile.name.split(".");
+    this.fileName =
+      new Date().getTime() +
+      "." +
+      this.lastNameFile[this.lastNameFile.length - 1];
+    //console.log(this.selectedFile.name);
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    var reader = new FileReader();
+    this.imagePath = event.target.files;
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
   }
 }

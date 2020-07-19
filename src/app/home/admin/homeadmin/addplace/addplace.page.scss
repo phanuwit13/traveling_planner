@@ -1,11 +1,7 @@
-$bg: #ebebeb;
-$bg2: #ffffff;
-
 #container {
   left: 0;
   right: 0;
   height: 100%;
-  background-color: $bg2;
   text-align: center;
   position: absolute;
 }
@@ -14,15 +10,9 @@ ion-content ion-toolbar {
   --background: translucent;
 }
 
-.ic {
-  font-size: 25px;
-}
-.tl {
+ion-title {
   font-size: 20px;
-  font-weight: bold;
-}
-.bt {
-  font-size: 17px;
+  font-weight: 400;
 }
 .lg {
   font-size: 100px;

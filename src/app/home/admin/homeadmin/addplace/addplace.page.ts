@@ -2,7 +2,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { HttpService } from "./../../../../services/http.service";
 import { Component, OnInit } from "@angular/core";
 import Swal from "sweetalert2";
-
+import Compressor from "compressorjs";
 declare var google;
 
 import { LoadingController, Platform } from "@ionic/angular";
@@ -22,8 +22,13 @@ export class AddplacePage implements OnInit {
   public placeStartAll = [];
   public placeEndAll = [];
   public distance = "";
+  public lastNameFile: Array<any> = [];
   public marker: any;
   loading: any;
+  public fileName = null;
+  public selectedFile: File = null;
+  imagePath: any;
+  imgURL: any;
   constructor(
     private http: HttpService,
     private formBuilder: FormBuilder,
@@ -95,11 +100,11 @@ export class AddplacePage implements OnInit {
         let formData = new FormData();
         Object.keys(this.form_place.value).forEach((key) => {
           formData.append(key, this.form_place.value[key]);
-          console.log(key + " : " + this.form_place.value[key]);
         });
-
+        formData.append("img", this.fileName);
+        formData.append("image", this.selectedFile, this.fileName);
         let httpRespon: any = await this.http.post("setPlace", formData);
-        console.log(httpRespon);
+        //console.log(httpRespon);
         if (httpRespon.response.success) {
           await Swal.fire(
             "สำเร็จ",
@@ -119,7 +124,7 @@ export class AddplacePage implements OnInit {
   }
   async getCategory() {
     let httpRespon: any = await this.http.post("getCategory");
-    console.log(httpRespon);
+    //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.categoryData = await httpRespon.response.data;
     } else {
@@ -129,7 +134,7 @@ export class AddplacePage implements OnInit {
 
   async setPath() {
     let httpRespon: any = await this.http.post("getPlace");
-    console.log(httpRespon);
+    //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.placeAll = await httpRespon.response.data;
     } else {
@@ -153,10 +158,6 @@ export class AddplacePage implements OnInit {
     }
   }
 
-  delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   async setDistanceGo() {
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
@@ -167,10 +168,10 @@ export class AddplacePage implements OnInit {
       },
       async (response, status) => {
         if ((status = "OK")) {
-          console.log(response);
+          //console.log(response);
           this.pathStart = await response.rows[0].elements;
           this.pathStart.forEach(async (item, index) => {
-            console.log(item.distance);
+            //console.log(item.distance);
             let formData = new FormData();
             let fare: number = await Math.ceil(
               (item.distance.value * 5) / 1000 + 52.5
@@ -185,15 +186,15 @@ export class AddplacePage implements OnInit {
             formData.append("fare", fare + "");
 
             let httpRespon: any = await this.http.post("setPath", formData);
-            console.log(httpRespon);
+            //console.log(httpRespon);
             if (httpRespon.response.success) {
-              console.log(httpRespon.response.message);
+              //console.log(httpRespon.response.message);
             } else {
-              console.log(httpRespon.response.message);
+              //console.log(httpRespon.response.message);
             }
           });
         } else {
-          console.log(status);
+          //console.log(status);
         }
       }
     );
@@ -212,7 +213,7 @@ export class AddplacePage implements OnInit {
           console.log(response);
           this.pathEnd = response.rows;
           this.pathEnd.forEach(async (item, index) => {
-            console.log(item.elements[0].distance);
+            //console.log(item.elements[0].distance);
             let formData = new FormData();
             let fare: number = await Math.ceil(
               (item.elements[0].distance.value * 5) / 1000 + 52.5
@@ -227,18 +228,41 @@ export class AddplacePage implements OnInit {
             formData.append("fare", fare + "");
 
             let httpRespon: any = await this.http.post("setPath", formData);
-            console.log(httpRespon);
+            //console.log(httpRespon);
             if (httpRespon.response.success) {
-              console.log(httpRespon.response.message);
+              //console.log(httpRespon.response.message);
             } else {
               console.log(httpRespon.response.message);
             }
           });
         } else {
-          console.log(status);
+          //console.log(status);
         }
         return 0;
       }
     );
+  }
+  /////////////////////
+  async onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+    //console.log(event.target.files);
+    //console.log(this.selectedFile);
+    if (event.target.files.length === 0) return;
+    this.lastNameFile = this.selectedFile.name.split(".");
+    this.fileName =
+      new Date().getTime() +
+      "." +
+      this.lastNameFile[this.lastNameFile.length - 1];
+    //console.log(this.selectedFile.name);
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    var reader = new FileReader();
+    this.imagePath = event.target.files;
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
   }
 }

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [routerLink]="['/home/admin/homeadmin']"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Category</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content mode="ios" [fullscreen]="false">
+  <form id="container">
+    <div style="padding: 5%;">
+      <span>ประเภทของสถานที่</span>
+    </div>
+    <ion-item-sliding *ngFor="let item of categoryData">
+      <ion-item>
+        <ion-label>
+          {{item.categoryTH}}
+          <br />
+          {{item.categoryEN}}
+        </ion-label>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option
+          style="color: #ffffff;"
+          (click)="AlertEdit(item.categoryTH,item.categoryEN,item.categoryNo)"
+          color="warning"
+        >
+          <ion-icon slot="start" name="color-wand"></ion-icon>
+          แก้ไข
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="delCategory(item.categoryNo)">
+          <ion-icon slot="start" name="trash-bin"></ion-icon>
+          ลบ
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <section class="full-width">
+    <ion-button mode="ios" (click)="AlertAdd()" expand="block" color="primary"
+      >Add</ion-button
+    >
+  </section>
+</ion-footer>

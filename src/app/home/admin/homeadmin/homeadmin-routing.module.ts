@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () =>
       import("./addplace/addplace.module").then((m) => m.AddplacePageModule),
   },
+  {
+    path: 'addcategory',
+    loadChildren: () => import('./addcategory/addcategory.module').then( m => m.AddcategoryPageModule)
+  },
 ];
 
 @NgModule({

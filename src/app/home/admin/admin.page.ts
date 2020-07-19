@@ -29,8 +29,11 @@ export class AdminPage implements OnInit {
     let httpRespone: any = await this.http.post("login", formData);
     console.log(httpRespone);
     if (httpRespone.response.success) {
-      await Swal.fire("สำเร็จ", httpRespone.response.message + " !", "success");
-      this.http.navRouter("/home/admin/homeadmin");
+      Swal.fire("สำเร็จ", httpRespone.response.message + " !", "success").then(
+        () => {
+          this.http.navRouter("/home/admin/homeadmin");
+        }
+      );
     } else {
       Swal.fire("ผิดพลาด", httpRespone.response.message + " !", "error");
     }

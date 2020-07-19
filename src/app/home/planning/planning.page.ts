@@ -18,6 +18,8 @@ export class PlanningPage implements OnInit {
   public point_start: Array<any> = [];
   public placeToGo: Array<any> = [];
   list = [];
+  public cost: number = 0;
+  public sumDistance: number = 0;
   constructor(private http: HttpService, private formBuilder: FormBuilder) {}
 
   @HostListener("document:ionBackButton", ["$event"])
@@ -92,14 +94,14 @@ export class PlanningPage implements OnInit {
   closeList() {
     this.http.removeList(this.list[0]);
   }
-  async addItem() {
-    if (this.noSort != []) {
-      this.http.addNewList(this.noSort);
+  async addItem(value: any) {
+    if (value != []) {
+      this.http.addNewList(value);
     }
   }
   async getPlace() {
     let httpRespon: any = await this.http.post("getPlace");
-    console.log(httpRespon);
+    //console.log(httpRespon);
     if (httpRespon.response.data.length > 0) {
       this.placeData = await httpRespon.response.data;
     } else {
@@ -112,9 +114,9 @@ export class PlanningPage implements OnInit {
       "categoryNo",
       this.form_planning.controls["categoryNo"].value
     );
-    console.log(this.form_planning.controls["categoryNo"].value);
+    //console.log(this.form_planning.controls["categoryNo"].value);
     let httpRespon: any = await this.http.post("getPlaceCategory", formData);
-    console.log(httpRespon);
+    //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.placeData = await httpRespon.response.data;
     } else {
@@ -123,7 +125,7 @@ export class PlanningPage implements OnInit {
   }
   async getCategory() {
     let httpRespon: any = await this.http.post("getCategory");
-    console.log(httpRespon);
+    //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.categoryData = await httpRespon.response.data;
     } else {
@@ -136,10 +138,16 @@ export class PlanningPage implements OnInit {
     this.noSort.push(this.form_planning.controls["point_start"].value);
     for (let i = 0; i < this.no.length; i++) {
       await this.loopPlace(this.point_start);
-      console.log(this.noSort);
+      //console.log(this.noSort);
     }
+    //console.log(this.cost);
     this.http.navRouter("/home/planning/resulte");
-    this.addItem();
+    this.sumDistance = await Math.ceil(
+      this.sumDistance / ((this.noSort.length - 1) * 1000)
+    );
+    await this.addItem(this.noSort);
+    await this.addItem(this.cost);
+    this.addItem(this.sumDistance);
     this.clearData();
   }
 
@@ -151,6 +159,8 @@ export class PlanningPage implements OnInit {
           this.distance[i].endPath == this.placeToGo[j].placeNo &&
           this.distance[i].distance != "0"
         ) {
+          this.cost += parseInt(this.distance[i].fare);
+          this.sumDistance += parseInt(this.distance[i].distance);
           this.noSort.push(this.placeToGo[j]);
           this.point_start = await this.placeToGo[j].placeNo;
           this.placeToGo.splice(j, 1);
@@ -166,7 +176,7 @@ export class PlanningPage implements OnInit {
     formData.append("firstPath", firstPath);
     //formData.append("endPath", endPath);
     let httpRespon: any = await this.http.post("getPathSelectOne", formData);
-    console.log(httpRespon);
+    //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.distance = httpRespon.response.data;
     } else {
@@ -176,7 +186,7 @@ export class PlanningPage implements OnInit {
     this.distance.sort((a: any, b: any) =>
       parseFloat(a.distance) < parseFloat(b.distance) ? -1 : 0
     );
-    console.log(this.distance);
+    //console.log(this.distance);
   }
   clearData() {
     this.no = [];
@@ -184,5 +194,7 @@ export class PlanningPage implements OnInit {
     this.distance = [];
     this.point_start = [];
     this.placeToGo = [];
+    this.cost = 0;
+    this.sumDistance = 0;
   }
 }

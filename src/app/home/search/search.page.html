@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <!-- <ion-icon name="chevron-back-outline">Black</ion-icon> -->
       <ion-back-button [routerLink]="['/home']"></ion-back-button>
     </ion-buttons>
     <ion-title>Search</ion-title>
@@ -27,14 +26,14 @@
         *ngFor="let item of place ;let i = index"
         (click)="openModal();addItem(item)"
       >
-        <!-- <ion-avatar slot="start">
-          <img
-            src="https://i.picsum.photos/id/496/200/200.jpg?hmac=Asy6Q8R1Y6wu0nrV_ymC5JGqktniSVnGqoYvNcHdzBI"
-          />
-        </ion-avatar> -->
         <ion-thumbnail slot="start">
           <img
+            *ngIf="item.img ==''"
             src="https://i.picsum.photos/id/496/200/200.jpg?hmac=Asy6Q8R1Y6wu0nrV_ymC5JGqktniSVnGqoYvNcHdzBI"
+          />
+          <img
+            *ngIf="item.img !=''"
+            src="http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{item.img}}"
           />
         </ion-thumbnail>
 
