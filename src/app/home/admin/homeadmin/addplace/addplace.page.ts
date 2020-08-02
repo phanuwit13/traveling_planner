@@ -103,6 +103,10 @@ export class AddplacePage implements OnInit {
         });
         formData.append("img", this.fileName);
         formData.append("image", this.selectedFile, this.fileName);
+        this.loading = await this.loadingCtrl.create({
+          message: "Please wait...",
+        });
+        await this.loading.present();
         let httpRespon: any = await this.http.post("setPlace", formData);
         //console.log(httpRespon);
         if (httpRespon.response.success) {
@@ -111,12 +115,19 @@ export class AddplacePage implements OnInit {
             httpRespon.response.message + " !",
             "success"
           ).then(() => {
+            this.loading.dismiss();
             this.setPath();
             this.form_place.reset();
             this.http.navRouter("/home/admin/homeadmin");
           });
         } else {
-          Swal.fire("ผิดพลาด", httpRespon.response.message + " !", "error");
+          Swal.fire(
+            "ผิดพลาด",
+            httpRespon.response.message + " !",
+            "error"
+          ).then(() => {
+            this.loading.dismiss();
+          });
         }
       } else if (result.dismiss === Swal.DismissReason.cancel) {
       }
@@ -174,7 +185,7 @@ export class AddplacePage implements OnInit {
             //console.log(item.distance);
             let formData = new FormData();
             let fare: number = await Math.ceil(
-              (item.distance.value * 5) / 1000 + 52.5
+              (item.distance.value * 6) / 1000 + 52.5
             );
             formData.append(
               "firstPath",
@@ -247,17 +258,21 @@ export class AddplacePage implements OnInit {
     this.selectedFile = <File>event.target.files[0];
     //console.log(event.target.files);
     //console.log(this.selectedFile);
-    if (event.target.files.length === 0) return;
+    if (event.target.files.length === 0) {
+      Swal.fire("กรุณาเลือกไฟล์", "", "error");
+      return;
+    }
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      Swal.fire("กรุณาเลือกไฟล์รูปภาพ", "", "error");
+      return;
+    }
     this.lastNameFile = this.selectedFile.name.split(".");
     this.fileName =
       new Date().getTime() +
       "." +
       this.lastNameFile[this.lastNameFile.length - 1];
     //console.log(this.selectedFile.name);
-    var mimeType = event.target.files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      return;
-    }
     var reader = new FileReader();
     this.imagePath = event.target.files;
     reader.readAsDataURL(event.target.files[0]);
