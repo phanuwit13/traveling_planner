@@ -142,12 +142,10 @@ export class PlanningPage implements OnInit {
     }
     //console.log(this.cost);
     this.http.navRouter("/home/planning/resulte");
-    this.sumDistance = await Math.ceil(
-      this.sumDistance / ((this.noSort.length - 1) * 1000)
-    );
+    this.sumDistance = this.sumDistance / 1000;
     await this.addItem(this.noSort);
     await this.addItem(this.cost);
-    this.addItem(this.sumDistance);
+    this.addItem(this.sumDistance.toFixed(2));
     this.clearData();
   }
 
@@ -160,7 +158,8 @@ export class PlanningPage implements OnInit {
           this.distance[i].distance != "0"
         ) {
           this.cost += parseInt(this.distance[i].fare);
-          this.sumDistance += parseInt(this.distance[i].distance);
+          this.sumDistance += parseFloat(this.distance[i].distance);
+          console.log(this.sumDistance);
           this.noSort.push(this.placeToGo[j]);
           this.point_start = await this.placeToGo[j].placeNo;
           this.placeToGo.splice(j, 1);

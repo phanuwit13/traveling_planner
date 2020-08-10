@@ -11,15 +11,15 @@
     <ion-card>
       <img
         *ngIf="this.form_place.controls['img'].value =='' && !imgURL"
-        height="400"
+        hheight="300"
         src="https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA"
       />
       <img
         *ngIf="this.form_place.controls['img'].value !='' && !imgURL"
-        height="400"
+        height="300"
         src="http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{this.form_place.controls['img'].value}}"
       />
-      <img [src]="imgURL" height="400" *ngIf="imgURL" />
+      <img [src]="imgURL" height="300" *ngIf="imgURL" />
       <ion-card-header>
         <ion-item>
           <ion-label>รูปภาพ :</ion-label>

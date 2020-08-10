@@ -21,6 +21,7 @@ export class AddplacePage implements OnInit {
   public pathEnd: Array<any> = null;
   public placeStartAll = [];
   public placeEndAll = [];
+  public placeNo = [];
   public distance = "";
   public lastNameFile: Array<any> = [];
   public marker: any;
@@ -29,6 +30,9 @@ export class AddplacePage implements OnInit {
   public selectedFile: File = null;
   imagePath: any;
   imgURL: any;
+
+  public rows: number;
+  public cols: number;
   constructor(
     private http: HttpService,
     private formBuilder: FormBuilder,
@@ -101,8 +105,10 @@ export class AddplacePage implements OnInit {
         Object.keys(this.form_place.value).forEach((key) => {
           formData.append(key, this.form_place.value[key]);
         });
-        formData.append("img", this.fileName);
-        formData.append("image", this.selectedFile, this.fileName);
+        if (this.fileName != null) {
+          formData.append("image", this.selectedFile, this.fileName);
+          formData.append("img", this.fileName);
+        }
         this.loading = await this.loadingCtrl.create({
           message: "Please wait...",
         });
@@ -151,36 +157,72 @@ export class AddplacePage implements OnInit {
     } else {
       this.placeAll = null;
     }
+    this.rows = Math.ceil(this.placeAll.length / 20);
+    for (let i = 0; i < this.rows; i++) {
+      this.placeNo.push([]);
+      this.placeEndAll.push([]);
+    }
     this.placeStartAll.push({
       lat: parseFloat(this.placeAll[this.placeAll.length - 1].latitude),
       lng: parseFloat(this.placeAll[this.placeAll.length - 1].longitude),
     });
+    let n = 0;
+
     this.placeAll.forEach(async (item, index) => {
-      this.placeEndAll.push({
+      if (index % 20 == 0 && index != 0) {
+        n++;
+      }
+      this.placeNo[n].push(this.placeAll[index].placeNo);
+      this.placeEndAll[n].push({
         lat: parseFloat(this.placeAll[index].latitude),
         lng: parseFloat(this.placeAll[index].longitude),
       });
     });
     if (this.placeAll.length > 1) {
-      this.setDistanceGo();
-      this.setDistanceBlack();
+      let p = 0;
+      this.setPathGoBlack(p);
     } else {
-      this.setDistanceGo();
+      let p = 0;
+      this.setPathGo(p);
     }
   }
 
-  async setDistanceGo() {
+  async setPathGoBlack(p) {
+    for (let item of this.placeEndAll) {
+      await this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+      await this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
+
+      await this.sleep(1000);
+      p++;
+    }
+  }
+  async setPathGo(p) {
+    for (let item of this.placeEndAll) {
+      await this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+      await this.sleep(1000);
+      p++;
+    }
+  }
+
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  async setDistanceGo(placeEnd, placeNo) {
     var service = new google.maps.DistanceMatrixService();
+
+    //console.log(placeEnd);
     service.getDistanceMatrix(
       {
         origins: this.placeStartAll,
-        destinations: this.placeEndAll,
+        destinations: placeEnd,
         travelMode: "DRIVING",
       },
-      async (response, status) => {
+      (response, status) => {
         if ((status = "OK")) {
           //console.log(response);
-          this.pathStart = await response.rows[0].elements;
+          //console.log(status);
+          this.pathStart = response.rows[0].elements;
+
           this.pathStart.forEach(async (item, index) => {
             //console.log(item.distance);
             let formData = new FormData();
@@ -191,11 +233,16 @@ export class AddplacePage implements OnInit {
               "firstPath",
               this.placeAll[this.placeAll.length - 1].placeNo
             );
-            formData.append("endPath", this.placeAll[index].placeNo);
+            formData.append("endPath", placeNo[index]);
             formData.append("distance", item.distance.value);
             formData.append("distanceText", item.distance.text);
             formData.append("fare", fare + "");
-
+            console.log(
+              "first : " +
+                this.placeAll[this.placeAll.length - 1].placeNo +
+                " end : " +
+                placeNo[index]
+            );
             let httpRespon: any = await this.http.post("setPath", formData);
             //console.log(httpRespon);
             if (httpRespon.response.success) {
@@ -211,11 +258,12 @@ export class AddplacePage implements OnInit {
     );
   }
 
-  async setDistanceBlack() {
+  async setDistanceBlack(placeEnd, placeNo) {
     var service = new google.maps.DistanceMatrixService();
+    //console.log(placeEnd);
     service.getDistanceMatrix(
       {
-        origins: this.placeEndAll,
+        origins: placeEnd,
         destinations: this.placeStartAll,
         travelMode: "DRIVING",
       },
@@ -227,9 +275,9 @@ export class AddplacePage implements OnInit {
             //console.log(item.elements[0].distance);
             let formData = new FormData();
             let fare: number = await Math.ceil(
-              (item.elements[0].distance.value * 5) / 1000 + 52.5
+              (item.elements[0].distance.value * 6) / 1000 + 52.5
             );
-            formData.append("firstPath", this.placeAll[index].placeNo);
+            formData.append("firstPath", placeNo[index]);
             formData.append(
               "endPath",
               this.placeAll[this.placeAll.length - 1].placeNo
@@ -237,7 +285,12 @@ export class AddplacePage implements OnInit {
             formData.append("distance", item.elements[0].distance.value);
             formData.append("distanceText", item.elements[0].distance.text);
             formData.append("fare", fare + "");
-
+            console.log(
+              "first : " +
+                placeNo[index] +
+                " end : " +
+                this.placeAll[this.placeAll.length - 1].placeNo
+            );
             let httpRespon: any = await this.http.post("setPath", formData);
             //console.log(httpRespon);
             if (httpRespon.response.success) {

@@ -1,0 +1,325 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["admin-admin-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/home/admin/admin.page.html":
+  /*!**********************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/home/admin/admin.page.html ***!
+    \**********************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppHomeAdminAdminPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <!-- <ion-icon name=\"chevron-back-outline\">Black</ion-icon> -->\n      <ion-back-button [routerLink]=\"['/home']\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Admin</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content [fullscreen]=\"false\">\n  <div id=\"container\" text-center>\n    <form [formGroup]=\"form_user\">\n      <ion-grid>\n        <ion-row color=\"primary\" justify-content-center>\n          <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n            <div text-center>\n              <ion-icon class=\"lg\" name=\"person-outline\"></ion-icon>\n            </div>\n            <div padding>\n              <ion-item>\n                <ion-input\n                  formControlName=\"username\"\n                  placeholder=\"Username\"\n                  required\n                ></ion-input>\n              </ion-item>\n              <ion-item>\n                <ion-input\n                  formControlName=\"password\"\n                  name=\"password\"\n                  type=\"password\"\n                  placeholder=\"Password\"\n                  required\n                ></ion-input>\n              </ion-item>\n            </div>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </form>\n  </div>\n</ion-content>\n\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      (click)=\"onLogin()\"\n      [disabled]=\"form_user.invalid\"\n      >Login</ion-button\n    >\n  </section>\n</ion-footer>\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/home/admin/admin-routing.module.ts":
+  /*!****************************************************!*\
+    !*** ./src/app/home/admin/admin-routing.module.ts ***!
+    \****************************************************/
+
+  /*! exports provided: AdminPageRoutingModule */
+
+  /***/
+  function srcAppHomeAdminAdminRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AdminPageRoutingModule", function () {
+      return AdminPageRoutingModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _admin_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./admin.page */
+    "./src/app/home/admin/admin.page.ts");
+
+    var routes = [{
+      path: "",
+      component: _admin_page__WEBPACK_IMPORTED_MODULE_3__["AdminPage"]
+    }, {
+      path: "homeadmin",
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | homeadmin-homeadmin-module */
+        "homeadmin-homeadmin-module").then(__webpack_require__.bind(null,
+        /*! ./homeadmin/homeadmin.module */
+        "./src/app/home/admin/homeadmin/homeadmin.module.ts")).then(function (m) {
+          return m.HomeadminPageModule;
+        });
+      }
+    }];
+
+    var AdminPageRoutingModule = function AdminPageRoutingModule() {
+      _classCallCheck(this, AdminPageRoutingModule);
+    };
+
+    AdminPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })], AdminPageRoutingModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/home/admin/admin.module.ts":
+  /*!********************************************!*\
+    !*** ./src/app/home/admin/admin.module.ts ***!
+    \********************************************/
+
+  /*! exports provided: AdminPageModule */
+
+  /***/
+  function srcAppHomeAdminAdminModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AdminPageModule", function () {
+      return AdminPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var _admin_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./admin-routing.module */
+    "./src/app/home/admin/admin-routing.module.ts");
+    /* harmony import */
+
+
+    var _admin_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./admin.page */
+    "./src/app/home/admin/admin.page.ts");
+
+    var AdminPageModule = function AdminPageModule() {
+      _classCallCheck(this, AdminPageModule);
+    };
+
+    AdminPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _admin_routing_module__WEBPACK_IMPORTED_MODULE_5__["AdminPageRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"]],
+      declarations: [_admin_page__WEBPACK_IMPORTED_MODULE_6__["AdminPage"]]
+    })], AdminPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/home/admin/admin.page.scss":
+  /*!********************************************!*\
+    !*** ./src/app/home/admin/admin.page.scss ***!
+    \********************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppHomeAdminAdminPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "#container {\n  text-align: center;\n  left: 0;\n  right: 0;\n  height: 100%;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL2FkbWluL2FkbWluLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9hZG1pbi9hZG1pbi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0FDQ0Y7O0FERUE7RUFDRSx5QkFBQTtBQ0NGOztBRENBO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0FDRUY7O0FEQUE7RUFDRSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDR0YiLCJmaWxlIjoic3JjL2FwcC9ob21lL2FkbWluL2FkbWluLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuaW9uLXRpdGxlIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBmb250LXdlaWdodDogNDAwO1xufVxuLmxnIHtcbiAgZm9udC1zaXplOiAxMDBweDtcbiAgbWFyZ2luLXRvcDogMTAlO1xuICBjb2xvcjogIzRjOGRmZjtcbn1cbiIsIiNjb250YWluZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5sZyB7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwJTtcbiAgY29sb3I6ICM0YzhkZmY7XG59Il19 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/home/admin/admin.page.ts":
+  /*!******************************************!*\
+    !*** ./src/app/home/admin/admin.page.ts ***!
+    \******************************************/
+
+  /*! exports provided: AdminPage */
+
+  /***/
+  function srcAppHomeAdminAdminPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AdminPage", function () {
+      return AdminPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_services_http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/http.service */
+    "./src/app/services/http.service.ts");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! sweetalert2 */
+    "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+    /* harmony import */
+
+
+    var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+
+    var AdminPage = /*#__PURE__*/function () {
+      function AdminPage(http, formBuilder) {
+        _classCallCheck(this, AdminPage);
+
+        this.http = http;
+        this.formBuilder = formBuilder;
+      }
+
+      _createClass(AdminPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.form_user = this.formBuilder.group({
+            username: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            password: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+          });
+        }
+      }, {
+        key: "onLogin",
+        value: function onLogin() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this = this;
+
+            var formData, httpRespone;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    formData = new FormData();
+                    Object.keys(this.form_user.value).forEach(function (key) {
+                      formData.append(key, _this.form_user.controls[key].value);
+                    });
+                    _context.next = 4;
+                    return this.http.post("login", formData);
+
+                  case 4:
+                    httpRespone = _context.sent;
+                    console.log(httpRespone);
+
+                    if (httpRespone.response.success) {
+                      sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("สำเร็จ", httpRespone.response.message + " !", "success").then(function () {
+                        _this.http.navRouter("/home/admin/homeadmin");
+                      });
+                    } else {
+                      sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("ผิดพลาด", httpRespone.response.message + " !", "error");
+                    }
+
+                  case 7:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }]);
+
+      return AdminPage;
+    }();
+
+    AdminPage.ctorParameters = function () {
+      return [{
+        type: src_app_services_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]
+      }, {
+        type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]
+      }];
+    };
+
+    AdminPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: "app-admin",
+      template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+      /*! raw-loader!./admin.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/home/admin/admin.page.html"))["default"],
+      styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+      /*! ./admin.page.scss */
+      "./src/app/home/admin/admin.page.scss"))["default"]]
+    })], AdminPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=admin-admin-module-es5.js.map

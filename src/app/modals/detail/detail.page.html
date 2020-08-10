@@ -10,7 +10,7 @@
   <ion-card *ngIf="list[0] !=null">
     <img
       *ngIf="list[0].img==''"
-      height="400"
+      height="300"
       src="https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA"
     />
     <img
@@ -27,7 +27,7 @@
       >
     </ion-card-header>
     <ion-card-content *ngIf="list[0] !=null">
-      {{list[0].detail}}
+      <ion-textarea disabled> {{list[0].detail}}</ion-textarea>
     </ion-card-content>
   </ion-card>
 </ion-content>

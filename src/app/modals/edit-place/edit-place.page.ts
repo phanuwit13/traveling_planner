@@ -85,8 +85,10 @@ export class EditPlacePage implements OnInit {
         Object.keys(this.form_place.value).forEach((key) => {
           formData.append(key, this.form_place.value[key]);
         });
-        formData.append("img", this.fileName);
-        formData.append("image", this.selectedFile, this.fileName);
+        if (this.fileName != null) {
+          formData.append("image", this.selectedFile, this.fileName);
+          formData.append("img", this.fileName);
+        }
         //console.log(this.selectedFile);
         let httpRespon: any = await this.http.post("setPlaceEdit", formData);
         //console.log(httpRespon);
