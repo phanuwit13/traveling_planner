@@ -30,9 +30,10 @@ export class AddplacePage implements OnInit {
   public selectedFile: File = null;
   imagePath: any;
   imgURL: any;
-
+  public key = "";
   public rows: number;
   public cols: number;
+  public geocoder: any;
   constructor(
     private http: HttpService,
     private formBuilder: FormBuilder,
@@ -66,6 +67,9 @@ export class AddplacePage implements OnInit {
       zoom: 15,
       center: { lat: 14.9736915, lng: 102.0827157 },
     });
+
+    this.geocoder = new google.maps.Geocoder();
+
     this.marker = await new google.maps.Marker({
       map: this.map,
       draggable: true,
@@ -82,6 +86,30 @@ export class AddplacePage implements OnInit {
       this.form_place.controls["longitude"].setValue(
         this.marker.getPosition().lng()
       );
+    });
+  }
+
+  getAddress() {
+    console.log(this.key);
+    this.geocoderAddress(this.geocoder, this.map);
+  }
+  geocoderAddress(geocoder, map) {
+    geocoder.geocode({ address: this.key }, (results, status) => {
+      if (status == "OK") {
+        map.setCenter(results[0].geometry.location);
+        map.setZoom(18);
+        this.marker.setPosition(results[0].geometry.location);
+        console.log(this.marker.getPosition().lat());
+        console.log(this.marker.getPosition().lng());
+        this.form_place.controls["latitude"].setValue(
+          this.marker.getPosition().lat()
+        );
+        this.form_place.controls["longitude"].setValue(
+          this.marker.getPosition().lng()
+        );
+      } else {
+        console.log(status);
+      }
     });
   }
 

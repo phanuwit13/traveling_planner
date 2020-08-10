@@ -10,6 +10,13 @@
   </ion-toolbar>
 </ion-header>
 <ion-content mode="ios" [fullscreen]="false">
+  <!-- Animated Searchbar -->
+  <ion-searchbar
+    [(ngModel)]="key"
+    (keyup.enter)="getAddress()"
+    animated
+  ></ion-searchbar>
+
   <div id="map_canvas"></div>
   <div id="container" text-center>
     <form action="" [formGroup]="form_place">
