@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <!-- <ion-icon name=\"chevron-back-outline\">Black</ion-icon> -->\n      <ion-back-button\n        [routerLink]=\"['/home/admin/homeadmin']\"\n      ></ion-back-button>\n    </ion-buttons>\n    <ion-title>Add Place</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"ios\" [fullscreen]=\"false\">\n  <div id=\"map_canvas\"></div>\n  <div id=\"container\" text-center>\n    <form action=\"\" [formGroup]=\"form_place\">\n      <div style=\"padding: 5%;\">\n        <span class=\"tl\">Add Place</span>\n      </div>\n      <img src=\"assets/img/icons-image.png\" height=\"200\" *ngIf=\"!imgURL\" />\n      <img [src]=\"imgURL\" height=\"200\" *ngIf=\"imgURL\" />\n      <ion-item>\n        <ion-label>รูปภาพ :</ion-label>\n        <ion-input\n          type=\"file\"\n          accept=\"image/*\"\n          id=\"upload\"\n          (change)=\"onFileSelected($event)\"\n        ></ion-input>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label>ชื่อสถานที่</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label>TH :</ion-label>\n        <ion-input formControlName=\"placeTH\"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label>EN :</ion-label>\n        <ion-input formControlName=\"placeEN\"></ion-input>\n      </ion-item>\n      <ion-item color=\"\">\n        <ion-label>ประเภท</ion-label>\n        <ion-select\n          type=\"md\"\n          formControlName=\"categoryNo\"\n          interface=\"action-sheet\"\n        >\n          <ion-select-option\n            *ngFor=\"let item of categoryData\"\n            [value]=\"item.categoryNo\"\n            >{{item.categoryTH}}</ion-select-option\n          >\n        </ion-select>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>รายละเอียด</ion-label>\n        <ion-textarea\n          formControlName=\"detail\"\n          rows=\"6\"\n          cols=\"20\"\n          placeholder=\"รายละเอียดของสถานที่ท่องเที่ยว...\"\n        ></ion-textarea>\n      </ion-item>\n    </form>\n  </div>\n</ion-content>\n\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      (click)=\"setPlace()\"\n      [disabled]=\"form_place.invalid\"\n      >Add</ion-button\n    >\n  </section>\n</ion-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <!-- <ion-icon name=\"chevron-back-outline\">Black</ion-icon> -->\n      <ion-back-button\n        [routerLink]=\"['/home/admin/homeadmin']\"\n      ></ion-back-button>\n    </ion-buttons>\n    <ion-title>Add Place</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"ios\" [fullscreen]=\"false\">\n  <!-- Animated Searchbar -->\n  <ion-searchbar\n    [(ngModel)]=\"key\"\n    (keyup.enter)=\"getAddress()\"\n    animated\n  ></ion-searchbar>\n\n  <div id=\"map_canvas\"></div>\n  <div id=\"container\" text-center>\n    <form action=\"\" [formGroup]=\"form_place\">\n      <div style=\"padding: 5%;\">\n        <span class=\"tl\">Add Place</span>\n      </div>\n      <img src=\"assets/img/icons-image.png\" height=\"200\" *ngIf=\"!imgURL\" />\n      <img [src]=\"imgURL\" height=\"200\" *ngIf=\"imgURL\" />\n      <ion-item>\n        <ion-label>รูปภาพ :</ion-label>\n        <ion-input\n          type=\"file\"\n          accept=\"image/*\"\n          id=\"upload\"\n          (change)=\"onFileSelected($event)\"\n        ></ion-input>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label>ชื่อสถานที่</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label>TH :</ion-label>\n        <ion-input formControlName=\"placeTH\"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label>EN :</ion-label>\n        <ion-input formControlName=\"placeEN\"></ion-input>\n      </ion-item>\n      <ion-item color=\"\">\n        <ion-label>ประเภท</ion-label>\n        <ion-select\n          type=\"md\"\n          formControlName=\"categoryNo\"\n          interface=\"action-sheet\"\n        >\n          <ion-select-option\n            *ngFor=\"let item of categoryData\"\n            [value]=\"item.categoryNo\"\n            >{{item.categoryTH}}</ion-select-option\n          >\n        </ion-select>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>รายละเอียด</ion-label>\n        <ion-textarea\n          formControlName=\"detail\"\n          rows=\"6\"\n          cols=\"20\"\n          placeholder=\"รายละเอียดของสถานที่ท่องเที่ยว...\"\n        ></ion-textarea>\n      </ion-item>\n    </form>\n  </div>\n</ion-content>\n\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      (click)=\"setPlace()\"\n      [disabled]=\"form_place.invalid\"\n      >Add</ion-button\n    >\n  </section>\n</ion-footer>\n");
 
 /***/ }),
 
@@ -102,7 +102,7 @@ AddplacePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 90%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLE9BQUE7RUFDQSxRQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QUNDRjs7QURFQTtFQUNFLHlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNFRjs7QURBQTtFQUNFLFdBQUE7QUNHRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuI21hcF9jYW52YXMge1xuICBoZWlnaHQ6IDkwJTtcbn1cbiIsIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5sZyB7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwJTtcbiAgY29sb3I6ICM0YzhkZmY7XG59XG5cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA5MCU7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 80%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLE9BQUE7RUFDQSxRQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QUNDRjs7QURFQTtFQUNFLHlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNFRjs7QURBQTtFQUNFLFdBQUE7QUNHRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuI21hcF9jYW52YXMge1xuICBoZWlnaHQ6IDgwJTtcbn1cbiIsIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5sZyB7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwJTtcbiAgY29sb3I6ICM0YzhkZmY7XG59XG5cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA4MCU7XG59Il19 */");
 
 /***/ }),
 
@@ -141,10 +141,12 @@ let AddplacePage = class AddplacePage {
         this.pathEnd = null;
         this.placeStartAll = [];
         this.placeEndAll = [];
+        this.placeNo = [];
         this.distance = "";
         this.lastNameFile = [];
         this.fileName = null;
         this.selectedFile = null;
+        this.key = "";
     }
     ngOnInit() {
         this.form_place = this.formBuilder.group({
@@ -170,6 +172,7 @@ let AddplacePage = class AddplacePage {
                 zoom: 15,
                 center: { lat: 14.9736915, lng: 102.0827157 },
             });
+            this.geocoder = new google.maps.Geocoder();
             this.marker = yield new google.maps.Marker({
                 map: this.map,
                 draggable: true,
@@ -183,6 +186,26 @@ let AddplacePage = class AddplacePage {
                 this.form_place.controls["latitude"].setValue(this.marker.getPosition().lat());
                 this.form_place.controls["longitude"].setValue(this.marker.getPosition().lng());
             });
+        });
+    }
+    getAddress() {
+        console.log(this.key);
+        this.geocoderAddress(this.geocoder, this.map);
+    }
+    geocoderAddress(geocoder, map) {
+        geocoder.geocode({ address: this.key }, (results, status) => {
+            if (status == "OK") {
+                map.setCenter(results[0].geometry.location);
+                map.setZoom(18);
+                this.marker.setPosition(results[0].geometry.location);
+                console.log(this.marker.getPosition().lat());
+                console.log(this.marker.getPosition().lng());
+                this.form_place.controls["latitude"].setValue(this.marker.getPosition().lat());
+                this.form_place.controls["longitude"].setValue(this.marker.getPosition().lng());
+            }
+            else {
+                console.log(status);
+            }
         });
     }
     setPlace() {
@@ -205,8 +228,10 @@ let AddplacePage = class AddplacePage {
                     Object.keys(this.form_place.value).forEach((key) => {
                         formData.append(key, this.form_place.value[key]);
                     });
-                    formData.append("img", this.fileName);
-                    formData.append("image", this.selectedFile, this.fileName);
+                    if (this.fileName != null) {
+                        formData.append("image", this.selectedFile, this.fileName);
+                        formData.append("img", this.fileName);
+                    }
                     this.loading = yield this.loadingCtrl.create({
                         message: "Please wait...",
                     });
@@ -254,45 +279,84 @@ let AddplacePage = class AddplacePage {
             else {
                 this.placeAll = null;
             }
+            this.rows = Math.ceil(this.placeAll.length / 20);
+            for (let i = 0; i < this.rows; i++) {
+                this.placeNo.push([]);
+                this.placeEndAll.push([]);
+            }
             this.placeStartAll.push({
                 lat: parseFloat(this.placeAll[this.placeAll.length - 1].latitude),
                 lng: parseFloat(this.placeAll[this.placeAll.length - 1].longitude),
             });
+            let n = 0;
             this.placeAll.forEach((item, index) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                this.placeEndAll.push({
+                if (index % 20 == 0 && index != 0) {
+                    n++;
+                }
+                this.placeNo[n].push(this.placeAll[index].placeNo);
+                this.placeEndAll[n].push({
                     lat: parseFloat(this.placeAll[index].latitude),
                     lng: parseFloat(this.placeAll[index].longitude),
                 });
             }));
             if (this.placeAll.length > 1) {
-                this.setDistanceGo();
-                this.setDistanceBlack();
+                let p = 0;
+                this.setPathGoBlack(p);
             }
             else {
-                this.setDistanceGo();
+                let p = 0;
+                this.setPathGo(p);
             }
         });
     }
-    setDistanceGo() {
+    setPathGoBlack(p) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            for (let item of this.placeEndAll) {
+                yield this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+                yield this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
+                yield this.sleep(1000);
+                p++;
+            }
+        });
+    }
+    setPathGo(p) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            for (let item of this.placeEndAll) {
+                yield this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+                yield this.sleep(1000);
+                p++;
+            }
+        });
+    }
+    sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    setDistanceGo(placeEnd, placeNo) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             var service = new google.maps.DistanceMatrixService();
+            //console.log(placeEnd);
             service.getDistanceMatrix({
                 origins: this.placeStartAll,
-                destinations: this.placeEndAll,
+                destinations: placeEnd,
                 travelMode: "DRIVING",
-            }, (response, status) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            }, (response, status) => {
                 if ((status = "OK")) {
                     //console.log(response);
-                    this.pathStart = yield response.rows[0].elements;
+                    //console.log(status);
+                    this.pathStart = response.rows[0].elements;
                     this.pathStart.forEach((item, index) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                         //console.log(item.distance);
                         let formData = new FormData();
                         let fare = yield Math.ceil((item.distance.value * 6) / 1000 + 52.5);
                         formData.append("firstPath", this.placeAll[this.placeAll.length - 1].placeNo);
-                        formData.append("endPath", this.placeAll[index].placeNo);
+                        formData.append("endPath", placeNo[index]);
                         formData.append("distance", item.distance.value);
                         formData.append("distanceText", item.distance.text);
                         formData.append("fare", fare + "");
+                        console.log("first : " +
+                            this.placeAll[this.placeAll.length - 1].placeNo +
+                            " end : " +
+                            placeNo[index]);
                         let httpRespon = yield this.http.post("setPath", formData);
                         //console.log(httpRespon);
                         if (httpRespon.response.success) {
@@ -306,14 +370,15 @@ let AddplacePage = class AddplacePage {
                 else {
                     //console.log(status);
                 }
-            }));
+            });
         });
     }
-    setDistanceBlack() {
+    setDistanceBlack(placeEnd, placeNo) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             var service = new google.maps.DistanceMatrixService();
+            //console.log(placeEnd);
             service.getDistanceMatrix({
-                origins: this.placeEndAll,
+                origins: placeEnd,
                 destinations: this.placeStartAll,
                 travelMode: "DRIVING",
             }, (response, status) => {
@@ -323,12 +388,16 @@ let AddplacePage = class AddplacePage {
                     this.pathEnd.forEach((item, index) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                         //console.log(item.elements[0].distance);
                         let formData = new FormData();
-                        let fare = yield Math.ceil((item.elements[0].distance.value * 5) / 1000 + 52.5);
-                        formData.append("firstPath", this.placeAll[index].placeNo);
+                        let fare = yield Math.ceil((item.elements[0].distance.value * 6) / 1000 + 52.5);
+                        formData.append("firstPath", placeNo[index]);
                         formData.append("endPath", this.placeAll[this.placeAll.length - 1].placeNo);
                         formData.append("distance", item.elements[0].distance.value);
                         formData.append("distanceText", item.elements[0].distance.text);
                         formData.append("fare", fare + "");
+                        console.log("first : " +
+                            placeNo[index] +
+                            " end : " +
+                            this.placeAll[this.placeAll.length - 1].placeNo);
                         let httpRespon = yield this.http.post("setPath", formData);
                         //console.log(httpRespon);
                         if (httpRespon.response.success) {

@@ -1,3 +1,9 @@
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -21,7 +27,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <!-- <ion-icon name=\"chevron-back-outline\">Black</ion-icon> -->\n      <ion-back-button\n        [routerLink]=\"['/home/admin/homeadmin']\"\n      ></ion-back-button>\n    </ion-buttons>\n    <ion-title>Add Place</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"ios\" [fullscreen]=\"false\">\n  <div id=\"map_canvas\"></div>\n  <div id=\"container\" text-center>\n    <form action=\"\" [formGroup]=\"form_place\">\n      <div style=\"padding: 5%;\">\n        <span class=\"tl\">Add Place</span>\n      </div>\n      <img src=\"assets/img/icons-image.png\" height=\"200\" *ngIf=\"!imgURL\" />\n      <img [src]=\"imgURL\" height=\"200\" *ngIf=\"imgURL\" />\n      <ion-item>\n        <ion-label>รูปภาพ :</ion-label>\n        <ion-input\n          type=\"file\"\n          accept=\"image/*\"\n          id=\"upload\"\n          (change)=\"onFileSelected($event)\"\n        ></ion-input>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label>ชื่อสถานที่</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label>TH :</ion-label>\n        <ion-input formControlName=\"placeTH\"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label>EN :</ion-label>\n        <ion-input formControlName=\"placeEN\"></ion-input>\n      </ion-item>\n      <ion-item color=\"\">\n        <ion-label>ประเภท</ion-label>\n        <ion-select\n          type=\"md\"\n          formControlName=\"categoryNo\"\n          interface=\"action-sheet\"\n        >\n          <ion-select-option\n            *ngFor=\"let item of categoryData\"\n            [value]=\"item.categoryNo\"\n            >{{item.categoryTH}}</ion-select-option\n          >\n        </ion-select>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>รายละเอียด</ion-label>\n        <ion-textarea\n          formControlName=\"detail\"\n          rows=\"6\"\n          cols=\"20\"\n          placeholder=\"รายละเอียดของสถานที่ท่องเที่ยว...\"\n        ></ion-textarea>\n      </ion-item>\n    </form>\n  </div>\n</ion-content>\n\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      (click)=\"setPlace()\"\n      [disabled]=\"form_place.invalid\"\n      >Add</ion-button\n    >\n  </section>\n</ion-footer>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <!-- <ion-icon name=\"chevron-back-outline\">Black</ion-icon> -->\n      <ion-back-button\n        [routerLink]=\"['/home/admin/homeadmin']\"\n      ></ion-back-button>\n    </ion-buttons>\n    <ion-title>Add Place</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"ios\" [fullscreen]=\"false\">\n  <!-- Animated Searchbar -->\n  <ion-searchbar\n    [(ngModel)]=\"key\"\n    (keyup.enter)=\"getAddress()\"\n    animated\n  ></ion-searchbar>\n\n  <div id=\"map_canvas\"></div>\n  <div id=\"container\" text-center>\n    <form action=\"\" [formGroup]=\"form_place\">\n      <div style=\"padding: 5%;\">\n        <span class=\"tl\">Add Place</span>\n      </div>\n      <img src=\"assets/img/icons-image.png\" height=\"200\" *ngIf=\"!imgURL\" />\n      <img [src]=\"imgURL\" height=\"200\" *ngIf=\"imgURL\" />\n      <ion-item>\n        <ion-label>รูปภาพ :</ion-label>\n        <ion-input\n          type=\"file\"\n          accept=\"image/*\"\n          id=\"upload\"\n          (change)=\"onFileSelected($event)\"\n        ></ion-input>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label>ชื่อสถานที่</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label>TH :</ion-label>\n        <ion-input formControlName=\"placeTH\"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label>EN :</ion-label>\n        <ion-input formControlName=\"placeEN\"></ion-input>\n      </ion-item>\n      <ion-item color=\"\">\n        <ion-label>ประเภท</ion-label>\n        <ion-select\n          type=\"md\"\n          formControlName=\"categoryNo\"\n          interface=\"action-sheet\"\n        >\n          <ion-select-option\n            *ngFor=\"let item of categoryData\"\n            [value]=\"item.categoryNo\"\n            >{{item.categoryTH}}</ion-select-option\n          >\n        </ion-select>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>รายละเอียด</ion-label>\n        <ion-textarea\n          formControlName=\"detail\"\n          rows=\"6\"\n          cols=\"20\"\n          placeholder=\"รายละเอียดของสถานที่ท่องเที่ยว...\"\n        ></ion-textarea>\n      </ion-item>\n    </form>\n  </div>\n</ion-content>\n\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      (click)=\"setPlace()\"\n      [disabled]=\"form_place.invalid\"\n      >Add</ion-button\n    >\n  </section>\n</ion-footer>\n";
     /***/
   },
 
@@ -174,7 +180,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 90%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLE9BQUE7RUFDQSxRQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QUNDRjs7QURFQTtFQUNFLHlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNFRjs7QURBQTtFQUNFLFdBQUE7QUNHRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuI21hcF9jYW52YXMge1xuICBoZWlnaHQ6IDkwJTtcbn1cbiIsIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5sZyB7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwJTtcbiAgY29sb3I6ICM0YzhkZmY7XG59XG5cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA5MCU7XG59Il19 */";
+    __webpack_exports__["default"] = "#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 80%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLE9BQUE7RUFDQSxRQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QUNDRjs7QURFQTtFQUNFLHlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNFRjs7QURBQTtFQUNFLFdBQUE7QUNHRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuI21hcF9jYW52YXMge1xuICBoZWlnaHQ6IDgwJTtcbn1cbiIsIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5sZyB7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwJTtcbiAgY29sb3I6ICM0YzhkZmY7XG59XG5cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA4MCU7XG59Il19 */";
     /***/
   },
 
@@ -252,10 +258,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.pathEnd = null;
         this.placeStartAll = [];
         this.placeEndAll = [];
+        this.placeNo = [];
         this.distance = "";
         this.lastNameFile = [];
         this.fileName = null;
         this.selectedFile = null;
+        this.key = "";
       }
 
       _createClass(AddplacePage, [{
@@ -300,7 +308,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         lng: 102.0827157
                       }
                     });
-                    _context.next = 8;
+                    this.geocoder = new google.maps.Geocoder();
+                    _context.next = 9;
                     return new google.maps.Marker({
                       map: this.map,
                       draggable: true,
@@ -311,7 +320,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       }
                     });
 
-                  case 8:
+                  case 9:
                     this.marker = _context.sent;
                     this.loading.dismiss();
                     this.marker.addListener("dragend", function () {
@@ -323,7 +332,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       _this.form_place.controls["longitude"].setValue(_this.marker.getPosition().lng());
                     });
 
-                  case 11:
+                  case 12:
                   case "end":
                     return _context.stop();
                 }
@@ -332,10 +341,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
+        key: "getAddress",
+        value: function getAddress() {
+          console.log(this.key);
+          this.geocoderAddress(this.geocoder, this.map);
+        }
+      }, {
+        key: "geocoderAddress",
+        value: function geocoderAddress(geocoder, map) {
+          var _this2 = this;
+
+          geocoder.geocode({
+            address: this.key
+          }, function (results, status) {
+            if (status == "OK") {
+              map.setCenter(results[0].geometry.location);
+              map.setZoom(18);
+
+              _this2.marker.setPosition(results[0].geometry.location);
+
+              console.log(_this2.marker.getPosition().lat());
+              console.log(_this2.marker.getPosition().lng());
+
+              _this2.form_place.controls["latitude"].setValue(_this2.marker.getPosition().lat());
+
+              _this2.form_place.controls["longitude"].setValue(_this2.marker.getPosition().lng());
+            } else {
+              console.log(status);
+            }
+          });
+        }
+      }, {
         key: "setPlace",
         value: function setPlace() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            var _this2 = this;
+            var _this3 = this;
 
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
@@ -354,8 +394,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       cancelButtonText: "ยกเลิก",
                       reverseButtons: true
                     }).then(function (result) {
-                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                        var _this3 = this;
+                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this3, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                        var _this4 = this;
 
                         var formData, httpRespon;
                         return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -363,66 +403,70 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             switch (_context2.prev = _context2.next) {
                               case 0:
                                 if (!result.value) {
-                                  _context2.next = 21;
+                                  _context2.next = 20;
                                   break;
                                 }
 
                                 formData = new FormData();
                                 Object.keys(this.form_place.value).forEach(function (key) {
-                                  formData.append(key, _this3.form_place.value[key]);
+                                  formData.append(key, _this4.form_place.value[key]);
                                 });
-                                formData.append("img", this.fileName);
-                                formData.append("image", this.selectedFile, this.fileName);
-                                _context2.next = 7;
+
+                                if (this.fileName != null) {
+                                  formData.append("image", this.selectedFile, this.fileName);
+                                  formData.append("img", this.fileName);
+                                }
+
+                                _context2.next = 6;
                                 return this.loadingCtrl.create({
                                   message: "Please wait..."
                                 });
 
-                              case 7:
+                              case 6:
                                 this.loading = _context2.sent;
-                                _context2.next = 10;
+                                _context2.next = 9;
                                 return this.loading.present();
 
-                              case 10:
-                                _context2.next = 12;
+                              case 9:
+                                _context2.next = 11;
                                 return this.http.post("setPlace", formData);
 
-                              case 12:
+                              case 11:
                                 httpRespon = _context2.sent;
 
                                 if (!httpRespon.response.success) {
-                                  _context2.next = 18;
+                                  _context2.next = 17;
                                   break;
                                 }
 
-                                _context2.next = 16;
+                                _context2.next = 15;
                                 return sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("สำเร็จ", httpRespon.response.message + " !", "success").then(function () {
-                                  _this3.loading.dismiss();
+                                  _this4.loading.dismiss();
 
-                                  _this3.setPath();
+                                  _this4.setPath();
 
-                                  _this3.form_place.reset();
+                                  _this4.form_place.reset();
 
-                                  _this3.http.navRouter("/home/admin/homeadmin");
+                                  _this4.http.navRouter("/home/admin/homeadmin");
                                 });
 
-                              case 16:
-                                _context2.next = 19;
+                              case 15:
+                                _context2.next = 18;
                                 break;
+
+                              case 17:
+                                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("ผิดพลาด", httpRespon.response.message + " !", "error").then(function () {
+                                  _this4.loading.dismiss();
+                                });
 
                               case 18:
-                                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("ผิดพลาด", httpRespon.response.message + " !", "error").then(function () {
-                                  _this3.loading.dismiss();
-                                });
-
-                              case 19:
-                                _context2.next = 22;
+                                _context2.next = 21;
                                 break;
 
-                              case 21:
+                              case 20:
                                 if (result.dismiss === sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.DismissReason.cancel) {}
 
-                              case 22:
+                              case 21:
                               case "end":
                                 return _context2.stop();
                             }
@@ -482,9 +526,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "setPath",
         value: function setPath() {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-            var _this4 = this;
+            var _this5 = this;
 
-            var httpRespon;
+            var httpRespon, i, n, p, _p;
+
             return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
                 switch (_context6.prev = _context6.next) {
@@ -512,22 +557,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.placeAll = null;
 
                   case 10:
+                    this.rows = Math.ceil(this.placeAll.length / 20);
+
+                    for (i = 0; i < this.rows; i++) {
+                      this.placeNo.push([]);
+                      this.placeEndAll.push([]);
+                    }
+
                     this.placeStartAll.push({
                       lat: parseFloat(this.placeAll[this.placeAll.length - 1].latitude),
                       lng: parseFloat(this.placeAll[this.placeAll.length - 1].longitude)
                     });
+                    n = 0;
                     this.placeAll.forEach(function (item, index) {
-                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this4, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this5, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
                         return regeneratorRuntime.wrap(function _callee5$(_context5) {
                           while (1) {
                             switch (_context5.prev = _context5.next) {
                               case 0:
-                                this.placeEndAll.push({
+                                if (index % 20 == 0 && index != 0) {
+                                  n++;
+                                }
+
+                                this.placeNo[n].push(this.placeAll[index].placeNo);
+                                this.placeEndAll[n].push({
                                   lat: parseFloat(this.placeAll[index].latitude),
                                   lng: parseFloat(this.placeAll[index].longitude)
                                 });
 
-                              case 1:
+                              case 3:
                               case "end":
                                 return _context5.stop();
                             }
@@ -537,13 +595,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
 
                     if (this.placeAll.length > 1) {
-                      this.setDistanceGo();
-                      this.setDistanceBlack();
+                      p = 0;
+                      this.setPathGoBlack(p);
                     } else {
-                      this.setDistanceGo();
+                      _p = 0;
+                      this.setPathGo(_p);
                     }
 
-                  case 13:
+                  case 16:
                   case "end":
                     return _context6.stop();
                 }
@@ -552,111 +611,227 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
+        key: "setPathGoBlack",
+        value: function setPathGoBlack(p) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            var _iterator, _step, item;
+
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _iterator = _createForOfIteratorHelper(this.placeEndAll);
+                    _context7.prev = 1;
+
+                    _iterator.s();
+
+                  case 3:
+                    if ((_step = _iterator.n()).done) {
+                      _context7.next = 14;
+                      break;
+                    }
+
+                    item = _step.value;
+                    _context7.next = 7;
+                    return this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+
+                  case 7:
+                    _context7.next = 9;
+                    return this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
+
+                  case 9:
+                    _context7.next = 11;
+                    return this.sleep(1000);
+
+                  case 11:
+                    p++;
+
+                  case 12:
+                    _context7.next = 3;
+                    break;
+
+                  case 14:
+                    _context7.next = 19;
+                    break;
+
+                  case 16:
+                    _context7.prev = 16;
+                    _context7.t0 = _context7["catch"](1);
+
+                    _iterator.e(_context7.t0);
+
+                  case 19:
+                    _context7.prev = 19;
+
+                    _iterator.f();
+
+                    return _context7.finish(19);
+
+                  case 22:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7, this, [[1, 16, 19, 22]]);
+          }));
+        }
+      }, {
+        key: "setPathGo",
+        value: function setPathGo(p) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            var _iterator2, _step2, item;
+
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+              while (1) {
+                switch (_context8.prev = _context8.next) {
+                  case 0:
+                    _iterator2 = _createForOfIteratorHelper(this.placeEndAll);
+                    _context8.prev = 1;
+
+                    _iterator2.s();
+
+                  case 3:
+                    if ((_step2 = _iterator2.n()).done) {
+                      _context8.next = 12;
+                      break;
+                    }
+
+                    item = _step2.value;
+                    _context8.next = 7;
+                    return this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+
+                  case 7:
+                    _context8.next = 9;
+                    return this.sleep(1000);
+
+                  case 9:
+                    p++;
+
+                  case 10:
+                    _context8.next = 3;
+                    break;
+
+                  case 12:
+                    _context8.next = 17;
+                    break;
+
+                  case 14:
+                    _context8.prev = 14;
+                    _context8.t0 = _context8["catch"](1);
+
+                    _iterator2.e(_context8.t0);
+
+                  case 17:
+                    _context8.prev = 17;
+
+                    _iterator2.f();
+
+                    return _context8.finish(17);
+
+                  case 20:
+                  case "end":
+                    return _context8.stop();
+                }
+              }
+            }, _callee8, this, [[1, 14, 17, 20]]);
+          }));
+        }
+      }, {
+        key: "sleep",
+        value: function sleep(ms) {
+          return new Promise(function (resolve) {
+            return setTimeout(resolve, ms);
+          });
+        }
+      }, {
         key: "setDistanceGo",
-        value: function setDistanceGo() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
-            var _this5 = this;
+        value: function setDistanceGo(placeEnd, placeNo) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+            var _this6 = this;
 
             var service;
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
               while (1) {
-                switch (_context9.prev = _context9.next) {
+                switch (_context10.prev = _context10.next) {
                   case 0:
-                    service = new google.maps.DistanceMatrixService();
+                    service = new google.maps.DistanceMatrixService(); //console.log(placeEnd);
+
                     service.getDistanceMatrix({
                       origins: this.placeStartAll,
-                      destinations: this.placeEndAll,
+                      destinations: placeEnd,
                       travelMode: "DRIVING"
                     }, function (response, status) {
-                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this5, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
-                        var _this6 = this;
+                      if (status = "OK") {
+                        //console.log(response);
+                        //console.log(status);
+                        _this6.pathStart = response.rows[0].elements;
 
-                        return regeneratorRuntime.wrap(function _callee8$(_context8) {
-                          while (1) {
-                            switch (_context8.prev = _context8.next) {
-                              case 0:
-                                if (!(status = "OK")) {
-                                  _context8.next = 7;
-                                  break;
-                                }
+                        _this6.pathStart.forEach(function (item, index) {
+                          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this6, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+                            var formData, fare, httpRespon;
+                            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                              while (1) {
+                                switch (_context9.prev = _context9.next) {
+                                  case 0:
+                                    //console.log(item.distance);
+                                    formData = new FormData();
+                                    _context9.next = 3;
+                                    return Math.ceil(item.distance.value * 6 / 1000 + 52.5);
 
-                                _context8.next = 3;
-                                return response.rows[0].elements;
+                                  case 3:
+                                    fare = _context9.sent;
+                                    formData.append("firstPath", this.placeAll[this.placeAll.length - 1].placeNo);
+                                    formData.append("endPath", placeNo[index]);
+                                    formData.append("distance", item.distance.value);
+                                    formData.append("distanceText", item.distance.text);
+                                    formData.append("fare", fare + "");
+                                    console.log("first : " + this.placeAll[this.placeAll.length - 1].placeNo + " end : " + placeNo[index]);
+                                    _context9.next = 12;
+                                    return this.http.post("setPath", formData);
 
-                              case 3:
-                                this.pathStart = _context8.sent;
-                                this.pathStart.forEach(function (item, index) {
-                                  return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this6, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-                                    var formData, fare, httpRespon;
-                                    return regeneratorRuntime.wrap(function _callee7$(_context7) {
-                                      while (1) {
-                                        switch (_context7.prev = _context7.next) {
-                                          case 0:
-                                            //console.log(item.distance);
-                                            formData = new FormData();
-                                            _context7.next = 3;
-                                            return Math.ceil(item.distance.value * 6 / 1000 + 52.5);
+                                  case 12:
+                                    httpRespon = _context9.sent;
 
-                                          case 3:
-                                            fare = _context7.sent;
-                                            formData.append("firstPath", this.placeAll[this.placeAll.length - 1].placeNo);
-                                            formData.append("endPath", this.placeAll[index].placeNo);
-                                            formData.append("distance", item.distance.value);
-                                            formData.append("distanceText", item.distance.text);
-                                            formData.append("fare", fare + "");
-                                            _context7.next = 11;
-                                            return this.http.post("setPath", formData);
-
-                                          case 11:
-                                            httpRespon = _context7.sent;
-
-                                            //console.log(httpRespon);
-                                            if (httpRespon.response.success) {//console.log(httpRespon.response.message);
-                                            } else {//console.log(httpRespon.response.message);
-                                              }
-
-                                          case 13:
-                                          case "end":
-                                            return _context7.stop();
-                                        }
+                                    //console.log(httpRespon);
+                                    if (httpRespon.response.success) {//console.log(httpRespon.response.message);
+                                    } else {//console.log(httpRespon.response.message);
                                       }
-                                    }, _callee7, this);
-                                  }));
-                                });
-                                _context8.next = 7;
-                                break;
 
-                              case 7:
-                              case "end":
-                                return _context8.stop();
-                            }
-                          }
-                        }, _callee8, this);
-                      }));
+                                  case 14:
+                                  case "end":
+                                    return _context9.stop();
+                                }
+                              }
+                            }, _callee9, this);
+                          }));
+                        });
+                      } else {//console.log(status);
+                      }
                     });
 
                   case 2:
                   case "end":
-                    return _context9.stop();
+                    return _context10.stop();
                 }
               }
-            }, _callee9, this);
+            }, _callee10, this);
           }));
         }
       }, {
         key: "setDistanceBlack",
-        value: function setDistanceBlack() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+        value: function setDistanceBlack(placeEnd, placeNo) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
             var _this7 = this;
 
             var service;
-            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
               while (1) {
-                switch (_context11.prev = _context11.next) {
+                switch (_context12.prev = _context12.next) {
                   case 0:
-                    service = new google.maps.DistanceMatrixService();
+                    service = new google.maps.DistanceMatrixService(); //console.log(placeEnd);
+
                     service.getDistanceMatrix({
-                      origins: this.placeEndAll,
+                      origins: placeEnd,
                       destinations: this.placeStartAll,
                       travelMode: "DRIVING"
                     }, function (response, status) {
@@ -665,29 +840,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         _this7.pathEnd = response.rows;
 
                         _this7.pathEnd.forEach(function (item, index) {
-                          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this7, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+                          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this7, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
                             var formData, fare, httpRespon;
-                            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                            return regeneratorRuntime.wrap(function _callee11$(_context11) {
                               while (1) {
-                                switch (_context10.prev = _context10.next) {
+                                switch (_context11.prev = _context11.next) {
                                   case 0:
                                     //console.log(item.elements[0].distance);
                                     formData = new FormData();
-                                    _context10.next = 3;
-                                    return Math.ceil(item.elements[0].distance.value * 5 / 1000 + 52.5);
+                                    _context11.next = 3;
+                                    return Math.ceil(item.elements[0].distance.value * 6 / 1000 + 52.5);
 
                                   case 3:
-                                    fare = _context10.sent;
-                                    formData.append("firstPath", this.placeAll[index].placeNo);
+                                    fare = _context11.sent;
+                                    formData.append("firstPath", placeNo[index]);
                                     formData.append("endPath", this.placeAll[this.placeAll.length - 1].placeNo);
                                     formData.append("distance", item.elements[0].distance.value);
                                     formData.append("distanceText", item.elements[0].distance.text);
                                     formData.append("fare", fare + "");
-                                    _context10.next = 11;
+                                    console.log("first : " + placeNo[index] + " end : " + this.placeAll[this.placeAll.length - 1].placeNo);
+                                    _context11.next = 12;
                                     return this.http.post("setPath", formData);
 
-                                  case 11:
-                                    httpRespon = _context10.sent;
+                                  case 12:
+                                    httpRespon = _context11.sent;
 
                                     //console.log(httpRespon);
                                     if (httpRespon.response.success) {//console.log(httpRespon.response.message);
@@ -695,12 +871,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                       console.log(httpRespon.response.message);
                                     }
 
-                                  case 13:
+                                  case 14:
                                   case "end":
-                                    return _context10.stop();
+                                    return _context11.stop();
                                 }
                               }
-                            }, _callee10, this);
+                            }, _callee11, this);
                           }));
                         });
                       } else {//console.log(status);
@@ -711,45 +887,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 2:
                   case "end":
-                    return _context11.stop();
+                    return _context12.stop();
                 }
               }
-            }, _callee11, this);
+            }, _callee12, this);
           }));
         } /////////////////////
 
       }, {
         key: "onFileSelected",
         value: function onFileSelected(event) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
             var _this8 = this;
 
             var mimeType, reader;
-            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
-                switch (_context12.prev = _context12.next) {
+                switch (_context13.prev = _context13.next) {
                   case 0:
                     this.selectedFile = event.target.files[0]; //console.log(event.target.files);
                     //console.log(this.selectedFile);
 
                     if (!(event.target.files.length === 0)) {
-                      _context12.next = 4;
+                      _context13.next = 4;
                       break;
                     }
 
                     sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("กรุณาเลือกไฟล์", "", "error");
-                    return _context12.abrupt("return");
+                    return _context13.abrupt("return");
 
                   case 4:
                     mimeType = event.target.files[0].type;
 
                     if (!(mimeType.match(/image\/*/) == null)) {
-                      _context12.next = 8;
+                      _context13.next = 8;
                       break;
                     }
 
                     sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("กรุณาเลือกไฟล์รูปภาพ", "", "error");
-                    return _context12.abrupt("return");
+                    return _context13.abrupt("return");
 
                   case 8:
                     this.lastNameFile = this.selectedFile.name.split(".");
@@ -765,10 +941,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 14:
                   case "end":
-                    return _context12.stop();
+                    return _context13.stop();
                 }
               }
-            }, _callee12, this);
+            }, _callee13, this);
           }));
         }
       }]);

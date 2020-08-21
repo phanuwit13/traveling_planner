@@ -186,7 +186,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header translucent>\n  <ion-toolbar>\n    <ion-title>Detail</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"closeModal()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"md\" fullscreen>\n  <ion-card *ngIf=\"list[0] !=null\">\n    <img\n      *ngIf=\"list[0].img==''\"\n      height=\"400\"\n      src=\"https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA\"\n    />\n    <img\n      *ngIf=\"list[0].img !=''\"\n      height=\"300\"\n      src=\"http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{list[0].img}}\"\n    />\n    <ion-card-header>\n      <ion-card-subtitle *ngIf=\"list[0] !=null\"\n        >{{list[0].categoryTH}}</ion-card-subtitle\n      >\n      <ion-card-title style=\"font-size: 20px;\" *ngIf=\"list[0] !=null\"\n        >{{list[0].placeTH}}</ion-card-title\n      >\n    </ion-card-header>\n    <ion-card-content *ngIf=\"list[0] !=null\">\n      {{list[0].detail}}\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header translucent>\n  <ion-toolbar>\n    <ion-title>Detail</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"closeModal()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"md\" fullscreen>\n  <ion-card *ngIf=\"list[0] !=null\">\n    <img\n      *ngIf=\"list[0].img==''\"\n      height=\"300\"\n      src=\"https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA\"\n    />\n    <img\n      *ngIf=\"list[0].img !=''\"\n      height=\"300\"\n      src=\"http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{list[0].img}}\"\n    />\n    <ion-card-header>\n      <ion-card-subtitle *ngIf=\"list[0] !=null\"\n        >{{list[0].categoryTH}}</ion-card-subtitle\n      >\n      <ion-card-title style=\"font-size: 20px;\" *ngIf=\"list[0] !=null\"\n        >{{list[0].placeTH}}</ion-card-title\n      >\n    </ion-card-header>\n    <ion-card-content *ngIf=\"list[0] !=null\">\n      <ion-textarea disabled> {{list[0].detail}}</ion-textarea>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n";
     /***/
   },
 
@@ -206,7 +206,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header mode=\"ios\" translucent>\n  <ion-toolbar>\n    <ion-title>Edit Place</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"closeModal()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"ios\">\n  <form action=\"\" [formGroup]=\"form_place\">\n    <ion-card>\n      <img\n        *ngIf=\"this.form_place.controls['img'].value =='' && !imgURL\"\n        height=\"400\"\n        src=\"https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA\"\n      />\n      <img\n        *ngIf=\"this.form_place.controls['img'].value !='' && !imgURL\"\n        height=\"400\"\n        src=\"http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{this.form_place.controls['img'].value}}\"\n      />\n      <img [src]=\"imgURL\" height=\"400\" *ngIf=\"imgURL\" />\n      <ion-card-header>\n        <ion-item>\n          <ion-label>รูปภาพ :</ion-label>\n          <ion-input\n            type=\"file\"\n            accept=\"image/*\"\n            id=\"upload\"\n            (change)=\"onFileSelected($event)\"\n          ></ion-input>\n        </ion-item>\n        <ion-item color=\"\">\n          <ion-label>ประเภท</ion-label>\n          <ion-select\n            type=\"md\"\n            formControlName=\"categoryNo\"\n            interface=\"action-sheet\"\n          >\n            <ion-select-option\n              *ngFor=\"let item of categoryData\"\n              [value]=\"item.categoryNo\"\n              >{{item.categoryTH}}</ion-select-option\n            >\n          </ion-select>\n        </ion-item>\n        <ion-item lines=\"none\">\n          <ion-label>ชื่อสถานที่</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-label>TH :</ion-label>\n          <ion-input formControlName=\"placeTH\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>EN :</ion-label>\n          <ion-input formControlName=\"placeEN\"></ion-input>\n        </ion-item>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-item>\n          <ion-label>รายละเอียด</ion-label>\n          <ion-textarea\n            formControlName=\"detail\"\n            rows=\"4\"\n            cols=\"50\"\n            placeholder=\"รายละเอียดของสถานที่ท่องเที่ยว...\"\n          ></ion-textarea>\n        </ion-item>\n      </ion-card-content>\n    </ion-card>\n  </form>\n</ion-content>\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      (click)=\"setPlaceEdit()\"\n      >Save</ion-button\n    >\n  </section>\n</ion-footer>\n";
+    __webpack_exports__["default"] = "<ion-header mode=\"ios\" translucent>\n  <ion-toolbar>\n    <ion-title>Edit Place</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"closeModal()\">Close</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"ios\">\n  <form action=\"\" [formGroup]=\"form_place\">\n    <ion-card>\n      <img\n        *ngIf=\"this.form_place.controls['img'].value =='' && !imgURL\"\n        hheight=\"300\"\n        src=\"https://i.picsum.photos/id/623/400/400.jpg?hmac=cWA8OevZRMt2Z__hKLPY6UMyf_YJfmXYsxwBZ6bf7wA\"\n      />\n      <img\n        *ngIf=\"this.form_place.controls['img'].value !='' && !imgURL\"\n        height=\"300\"\n        src=\"http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{this.form_place.controls['img'].value}}\"\n      />\n      <img [src]=\"imgURL\" height=\"300\" *ngIf=\"imgURL\" />\n      <ion-card-header>\n        <ion-item>\n          <ion-label>รูปภาพ :</ion-label>\n          <ion-input\n            type=\"file\"\n            accept=\"image/*\"\n            id=\"upload\"\n            (change)=\"onFileSelected($event)\"\n          ></ion-input>\n        </ion-item>\n        <ion-item color=\"\">\n          <ion-label>ประเภท</ion-label>\n          <ion-select\n            type=\"md\"\n            formControlName=\"categoryNo\"\n            interface=\"action-sheet\"\n          >\n            <ion-select-option\n              *ngFor=\"let item of categoryData\"\n              [value]=\"item.categoryNo\"\n              >{{item.categoryTH}}</ion-select-option\n            >\n          </ion-select>\n        </ion-item>\n        <ion-item lines=\"none\">\n          <ion-label>ชื่อสถานที่</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-label>TH :</ion-label>\n          <ion-input formControlName=\"placeTH\"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>EN :</ion-label>\n          <ion-input formControlName=\"placeEN\"></ion-input>\n        </ion-item>\n      </ion-card-header>\n      <ion-card-content>\n        <ion-item>\n          <ion-label>รายละเอียด</ion-label>\n          <ion-textarea\n            formControlName=\"detail\"\n            rows=\"4\"\n            cols=\"50\"\n            placeholder=\"รายละเอียดของสถานที่ท่องเที่ยว...\"\n          ></ion-textarea>\n        </ion-item>\n      </ion-card-content>\n    </ion-card>\n  </form>\n</ion-content>\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      (click)=\"setPlaceEdit()\"\n      >Save</ion-button\n    >\n  </section>\n</ion-footer>\n";
     /***/
   },
 
@@ -1193,7 +1193,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             switch (_context6.prev = _context6.next) {
                               case 0:
                                 if (!result.value) {
-                                  _context6.next = 17;
+                                  _context6.next = 16;
                                   break;
                                 }
 
@@ -1201,41 +1201,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 Object.keys(this.form_place.value).forEach(function (key) {
                                   formData.append(key, _this5.form_place.value[key]);
                                 });
-                                formData.append("img", this.fileName);
-                                formData.append("image", this.selectedFile, this.fileName); //console.log(this.selectedFile);
 
-                                _context6.next = 7;
+                                if (this.fileName != null) {
+                                  formData.append("image", this.selectedFile, this.fileName);
+                                  formData.append("img", this.fileName);
+                                } //console.log(this.selectedFile);
+
+
+                                _context6.next = 6;
                                 return this.http.post("setPlaceEdit", formData);
 
-                              case 7:
+                              case 6:
                                 httpRespon = _context6.sent;
 
                                 if (!httpRespon.response.success) {
-                                  _context6.next = 14;
+                                  _context6.next = 13;
                                   break;
                                 }
 
-                                _context6.next = 11;
+                                _context6.next = 10;
                                 return sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("สำเร็จ", httpRespon.response.message, "success");
 
-                              case 11:
+                              case 10:
                                 this.closeModal();
-                                _context6.next = 15;
+                                _context6.next = 14;
                                 break;
 
-                              case 14:
+                              case 13:
                                 sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire("ผิดพลาด", httpRespon.response.message, "error");
 
-                              case 15:
-                                _context6.next = 18;
+                              case 14:
+                                _context6.next = 17;
                                 break;
 
-                              case 17:
+                              case 16:
                                 if (
                                 /* Read more about handling dismissals below */
                                 result.dismiss === sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.DismissReason.cancel) {}
 
-                              case 18:
+                              case 17:
                               case "end":
                                 return _context6.stop();
                             }

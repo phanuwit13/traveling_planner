@@ -265,10 +265,10 @@ let PlanningPage = class PlanningPage {
             }
             //console.log(this.cost);
             this.http.navRouter("/home/planning/resulte");
-            this.sumDistance = yield Math.ceil(this.sumDistance / ((this.noSort.length - 1) * 1000));
+            this.sumDistance = this.sumDistance / 1000;
             yield this.addItem(this.noSort);
             yield this.addItem(this.cost);
-            this.addItem(this.sumDistance);
+            this.addItem(this.sumDistance.toFixed(2));
             this.clearData();
         });
     }
@@ -280,7 +280,8 @@ let PlanningPage = class PlanningPage {
                     if (this.distance[i].endPath == this.placeToGo[j].placeNo &&
                         this.distance[i].distance != "0") {
                         this.cost += parseInt(this.distance[i].fare);
-                        this.sumDistance += parseInt(this.distance[i].distance);
+                        this.sumDistance += parseFloat(this.distance[i].distance);
+                        console.log(this.sumDistance);
                         this.noSort.push(this.placeToGo[j]);
                         this.point_start = yield this.placeToGo[j].placeNo;
                         this.placeToGo.splice(j, 1);

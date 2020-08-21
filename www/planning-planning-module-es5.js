@@ -579,23 +579,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 9:
                     //console.log(this.cost);
                     this.http.navRouter("/home/planning/resulte");
-                    _context9.next = 12;
-                    return Math.ceil(this.sumDistance / ((this.noSort.length - 1) * 1000));
-
-                  case 12:
-                    this.sumDistance = _context9.sent;
-                    _context9.next = 15;
+                    this.sumDistance = this.sumDistance / 1000;
+                    _context9.next = 13;
                     return this.addItem(this.noSort);
 
-                  case 15:
-                    _context9.next = 17;
+                  case 13:
+                    _context9.next = 15;
                     return this.addItem(this.cost);
 
-                  case 17:
-                    this.addItem(this.sumDistance);
+                  case 15:
+                    this.addItem(this.sumDistance.toFixed(2));
                     this.clearData();
 
-                  case 19:
+                  case 17:
                   case "end":
                     return _context9.stop();
                 }
@@ -620,7 +616,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 3:
                     if (!(i < this.distance.length)) {
-                      _context10.next = 22;
+                      _context10.next = 23;
                       break;
                     }
 
@@ -628,38 +624,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 5:
                     if (!(j < this.placeToGo.length)) {
-                      _context10.next = 19;
+                      _context10.next = 20;
                       break;
                     }
 
                     if (!(this.distance[i].endPath == this.placeToGo[j].placeNo && this.distance[i].distance != "0")) {
-                      _context10.next = 16;
+                      _context10.next = 17;
                       break;
                     }
 
                     this.cost += parseInt(this.distance[i].fare);
-                    this.sumDistance += parseInt(this.distance[i].distance);
+                    this.sumDistance += parseFloat(this.distance[i].distance);
+                    console.log(this.sumDistance);
                     this.noSort.push(this.placeToGo[j]);
-                    _context10.next = 12;
+                    _context10.next = 13;
                     return this.placeToGo[j].placeNo;
 
-                  case 12:
+                  case 13:
                     this.point_start = _context10.sent;
                     this.placeToGo.splice(j, 1);
                     i = this.distance.length + 1;
-                    return _context10.abrupt("break", 19);
+                    return _context10.abrupt("break", 20);
 
-                  case 16:
+                  case 17:
                     j++;
                     _context10.next = 5;
                     break;
 
-                  case 19:
+                  case 20:
                     i++;
                     _context10.next = 3;
                     break;
 
-                  case 22:
+                  case 23:
                   case "end":
                     return _context10.stop();
                 }

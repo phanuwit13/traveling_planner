@@ -144,15 +144,16 @@ export class AddplacePage implements OnInit {
         let httpRespon: any = await this.http.post("setPlace", formData);
         //console.log(httpRespon);
         if (httpRespon.response.success) {
-          await Swal.fire(
-            "สำเร็จ",
-            httpRespon.response.message + " !",
-            "success"
-          ).then(() => {
+          this.setPath().then(async () => {
             this.loading.dismiss();
-            this.setPath();
-            this.form_place.reset();
-            this.http.navRouter("/home/admin/homeadmin");
+            await Swal.fire(
+              "สำเร็จ",
+              httpRespon.response.message + " !",
+              "success"
+            ).then(() => {
+              this.form_place.reset();
+              this.http.navRouter("/home/admin/homeadmin");
+            });
           });
         } else {
           Swal.fire(
@@ -208,26 +209,28 @@ export class AddplacePage implements OnInit {
     });
     if (this.placeAll.length > 1) {
       let p = 0;
-      this.setPathGoBlack(p);
+      await this.setPathGoBlack(p);
     } else {
       let p = 0;
-      this.setPathGo(p);
+      await this.setPathGo(p);
     }
+    return true;
   }
 
   async setPathGoBlack(p) {
     for (let item of this.placeEndAll) {
       await this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+      await this.sleep(1000);
       await this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
-
       await this.sleep(1000);
       p++;
     }
+    return true;
   }
   async setPathGo(p) {
     for (let item of this.placeEndAll) {
       await this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
-      await this.sleep(1000);
+      await this.sleep(500);
       p++;
     }
   }
@@ -247,7 +250,7 @@ export class AddplacePage implements OnInit {
       },
       (response, status) => {
         if ((status = "OK")) {
-          //console.log(response);
+          console.log("ขาไป" + response);
           //console.log(status);
           this.pathStart = response.rows[0].elements;
 
@@ -265,18 +268,19 @@ export class AddplacePage implements OnInit {
             formData.append("distance", item.distance.value);
             formData.append("distanceText", item.distance.text);
             formData.append("fare", fare + "");
-            console.log(
-              "first : " +
-                this.placeAll[this.placeAll.length - 1].placeNo +
-                " end : " +
-                placeNo[index]
-            );
+
             let httpRespon: any = await this.http.post("setPath", formData);
             //console.log(httpRespon);
             if (httpRespon.response.success) {
+              console.log(
+                "first : " +
+                  this.placeAll[this.placeAll.length - 1].placeNo +
+                  " end : " +
+                  placeNo[index]
+              );
               //console.log(httpRespon.response.message);
             } else {
-              //console.log(httpRespon.response.message);
+              console.log(httpRespon.response.message);
             }
           });
         } else {
@@ -297,7 +301,7 @@ export class AddplacePage implements OnInit {
       },
       (response, status) => {
         if ((status = "OK")) {
-          console.log(response);
+          console.log("ขากลับ" + response);
           this.pathEnd = response.rows;
           this.pathEnd.forEach(async (item, index) => {
             //console.log(item.elements[0].distance);
@@ -313,15 +317,16 @@ export class AddplacePage implements OnInit {
             formData.append("distance", item.elements[0].distance.value);
             formData.append("distanceText", item.elements[0].distance.text);
             formData.append("fare", fare + "");
-            console.log(
-              "first : " +
-                placeNo[index] +
-                " end : " +
-                this.placeAll[this.placeAll.length - 1].placeNo
-            );
+
             let httpRespon: any = await this.http.post("setPath", formData);
             //console.log(httpRespon);
             if (httpRespon.response.success) {
+              console.log(
+                "first : " +
+                  placeNo[index] +
+                  " end : " +
+                  this.placeAll[this.placeAll.length - 1].placeNo
+              );
               //console.log(httpRespon.response.message);
             } else {
               console.log(httpRespon.response.message);
