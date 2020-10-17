@@ -180,7 +180,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 80%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLE9BQUE7RUFDQSxRQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QUNDRjs7QURFQTtFQUNFLHlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNFRjs7QURBQTtFQUNFLFdBQUE7QUNHRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuI21hcF9jYW52YXMge1xuICBoZWlnaHQ6IDgwJTtcbn1cbiIsIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5sZyB7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwJTtcbiAgY29sb3I6ICM0YzhkZmY7XG59XG5cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA4MCU7XG59Il19 */";
+    __webpack_exports__["default"] = "#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 80%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9hZG1pbi9ob21lYWRtaW4vYWRkcGxhY2UvQzpcXHByb2plY3RcXGZhaWxcXHRyYXZlbGluZ19wbGFubmVyL3NyY1xcYXBwXFxob21lXFxhZG1pblxcaG9tZWFkbWluXFxhZGRwbGFjZVxcYWRkcGxhY2UucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0FDQ0Y7O0FERUE7RUFDRSx5QkFBQTtBQ0NGOztBREVBO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDRUY7O0FEQUE7RUFDRSxXQUFBO0FDR0YiLCJmaWxlIjoic3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjY29udGFpbmVyIHtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGhlaWdodDogMTAwJTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59XG5cbmlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cblxuaW9uLXRpdGxlIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBmb250LXdlaWdodDogNDAwO1xufVxuLmxnIHtcbiAgZm9udC1zaXplOiAxMDBweDtcbiAgbWFyZ2luLXRvcDogMTAlO1xuICBjb2xvcjogIzRjOGRmZjtcbn1cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA4MCU7XG59XG4iLCIjY29udGFpbmVyIHtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGhlaWdodDogMTAwJTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59XG5cbmlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cblxuaW9uLXRpdGxlIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBmb250LXdlaWdodDogNDAwO1xufVxuXG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuXG4jbWFwX2NhbnZhcyB7XG4gIGhlaWdodDogODAlO1xufSJdfQ== */";
     /***/
   },
 
@@ -374,12 +374,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setPlace",
         value: function setPlace() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
             var _this3 = this;
 
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
-                switch (_context3.prev = _context3.next) {
+                switch (_context4.prev = _context4.next) {
                   case 0:
                     this.placeStartAll = [];
                     this.placeEndAll = [];
@@ -394,16 +394,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       cancelButtonText: "ยกเลิก",
                       reverseButtons: true
                     }).then(function (result) {
-                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this3, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this3, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
                         var _this4 = this;
 
                         var formData, httpRespon;
-                        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                        return regeneratorRuntime.wrap(function _callee3$(_context3) {
                           while (1) {
-                            switch (_context2.prev = _context2.next) {
+                            switch (_context3.prev = _context3.next) {
                               case 0:
                                 if (!result.value) {
-                                  _context2.next = 20;
+                                  _context3.next = 15;
                                   break;
                                 }
 
@@ -417,104 +417,71 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   formData.append("img", this.fileName);
                                 }
 
-                                _context2.next = 6;
+                                _context3.next = 6;
                                 return this.loadingCtrl.create({
                                   message: "Please wait..."
                                 });
 
                               case 6:
-                                this.loading = _context2.sent;
-                                _context2.next = 9;
+                                this.loading = _context3.sent;
+                                _context3.next = 9;
                                 return this.loading.present();
 
                               case 9:
-                                _context2.next = 11;
+                                _context3.next = 11;
                                 return this.http.post("setPlace", formData);
 
                               case 11:
-                                httpRespon = _context2.sent;
+                                httpRespon = _context3.sent;
 
-                                if (!httpRespon.response.success) {
-                                  _context2.next = 17;
-                                  break;
+                                //console.log(httpRespon);
+                                if (httpRespon.response.success) {
+                                  this.setPath().then(function () {
+                                    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this4, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                                      var _this5 = this;
+
+                                      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                                        while (1) {
+                                          switch (_context2.prev = _context2.next) {
+                                            case 0:
+                                              this.loading.dismiss();
+                                              _context2.next = 3;
+                                              return sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("สำเร็จ", httpRespon.response.message + " !", "success").then(function () {
+                                                _this5.form_place.reset();
+
+                                                _this5.http.navRouter("/home/admin/homeadmin");
+                                              });
+
+                                            case 3:
+                                            case "end":
+                                              return _context2.stop();
+                                          }
+                                        }
+                                      }, _callee2, this);
+                                    }));
+                                  });
+                                } else {
+                                  sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("ผิดพลาด", httpRespon.response.message + " !", "error").then(function () {
+                                    _this4.loading.dismiss();
+                                  });
                                 }
 
-                                _context2.next = 15;
-                                return sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("สำเร็จ", httpRespon.response.message + " !", "success").then(function () {
-                                  _this4.loading.dismiss();
-
-                                  _this4.setPath();
-
-                                  _this4.form_place.reset();
-
-                                  _this4.http.navRouter("/home/admin/homeadmin");
-                                });
+                                _context3.next = 16;
+                                break;
 
                               case 15:
-                                _context2.next = 18;
-                                break;
-
-                              case 17:
-                                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("ผิดพลาด", httpRespon.response.message + " !", "error").then(function () {
-                                  _this4.loading.dismiss();
-                                });
-
-                              case 18:
-                                _context2.next = 21;
-                                break;
-
-                              case 20:
                                 if (result.dismiss === sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.DismissReason.cancel) {}
 
-                              case 21:
+                              case 16:
                               case "end":
-                                return _context2.stop();
+                                return _context3.stop();
                             }
                           }
-                        }, _callee2, this);
+                        }, _callee3, this);
                       }));
                     });
 
                   case 3:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            }, _callee3, this);
-          }));
-        }
-      }, {
-        key: "getCategory",
-        value: function getCategory() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-            var httpRespon;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    _context4.next = 2;
-                    return this.http.post("getCategory");
-
-                  case 2:
-                    httpRespon = _context4.sent;
-
-                    if (!httpRespon.response.success) {
-                      _context4.next = 9;
-                      break;
-                    }
-
-                    _context4.next = 6;
-                    return httpRespon.response.data;
-
-                  case 6:
-                    this.categoryData = _context4.sent;
-                    _context4.next = 10;
-                    break;
-
-                  case 9:
-                    this.categoryData = null;
-
-                  case 10:
                   case "end":
                     return _context4.stop();
                 }
@@ -523,34 +490,73 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
-        key: "setPath",
-        value: function setPath() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-            var _this5 = this;
-
-            var httpRespon, i, n, p, _p;
-
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        key: "getCategory",
+        value: function getCategory() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            var httpRespon;
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
-                switch (_context6.prev = _context6.next) {
+                switch (_context5.prev = _context5.next) {
                   case 0:
-                    _context6.next = 2;
-                    return this.http.post("getPlace");
+                    _context5.next = 2;
+                    return this.http.post("getCategory");
 
                   case 2:
-                    httpRespon = _context6.sent;
+                    httpRespon = _context5.sent;
 
                     if (!httpRespon.response.success) {
-                      _context6.next = 9;
+                      _context5.next = 9;
                       break;
                     }
 
-                    _context6.next = 6;
+                    _context5.next = 6;
                     return httpRespon.response.data;
 
                   case 6:
-                    this.placeAll = _context6.sent;
-                    _context6.next = 10;
+                    this.categoryData = _context5.sent;
+                    _context5.next = 10;
+                    break;
+
+                  case 9:
+                    this.categoryData = null;
+
+                  case 10:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5, this);
+          }));
+        }
+      }, {
+        key: "setPath",
+        value: function setPath() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            var _this6 = this;
+
+            var httpRespon, i, n, p, _p;
+
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _context7.next = 2;
+                    return this.http.post("getPlace");
+
+                  case 2:
+                    httpRespon = _context7.sent;
+
+                    if (!httpRespon.response.success) {
+                      _context7.next = 9;
+                      break;
+                    }
+
+                    _context7.next = 6;
+                    return httpRespon.response.data;
+
+                  case 6:
+                    this.placeAll = _context7.sent;
+                    _context7.next = 10;
                     break;
 
                   case 9:
@@ -570,10 +576,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                     n = 0;
                     this.placeAll.forEach(function (item, index) {
-                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this5, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-                        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                      return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this6, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+                        return regeneratorRuntime.wrap(function _callee6$(_context6) {
                           while (1) {
-                            switch (_context5.prev = _context5.next) {
+                            switch (_context6.prev = _context6.next) {
                               case 0:
                                 if (index % 20 == 0 && index != 0) {
                                   n++;
@@ -587,153 +593,173 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                               case 3:
                               case "end":
-                                return _context5.stop();
+                                return _context6.stop();
                             }
                           }
-                        }, _callee5, this);
+                        }, _callee6, this);
                       }));
                     });
 
-                    if (this.placeAll.length > 1) {
-                      p = 0;
-                      this.setPathGoBlack(p);
-                    } else {
-                      _p = 0;
-                      this.setPathGo(_p);
+                    if (!(this.placeAll.length > 1)) {
+                      _context7.next = 21;
+                      break;
                     }
 
-                  case 16:
+                    p = 0;
+                    _context7.next = 19;
+                    return this.setPathGoBlack(p);
+
+                  case 19:
+                    _context7.next = 24;
+                    break;
+
+                  case 21:
+                    _p = 0;
+                    _context7.next = 24;
+                    return this.setPathGo(_p);
+
+                  case 24:
+                    return _context7.abrupt("return", true);
+
+                  case 25:
                   case "end":
-                    return _context6.stop();
+                    return _context7.stop();
                 }
               }
-            }, _callee6, this);
+            }, _callee7, this);
           }));
         }
       }, {
         key: "setPathGoBlack",
         value: function setPathGoBlack(p) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-            var _iterator, _step, item;
-
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
-              while (1) {
-                switch (_context7.prev = _context7.next) {
-                  case 0:
-                    _iterator = _createForOfIteratorHelper(this.placeEndAll);
-                    _context7.prev = 1;
-
-                    _iterator.s();
-
-                  case 3:
-                    if ((_step = _iterator.n()).done) {
-                      _context7.next = 14;
-                      break;
-                    }
-
-                    item = _step.value;
-                    _context7.next = 7;
-                    return this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
-
-                  case 7:
-                    _context7.next = 9;
-                    return this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
-
-                  case 9:
-                    _context7.next = 11;
-                    return this.sleep(1000);
-
-                  case 11:
-                    p++;
-
-                  case 12:
-                    _context7.next = 3;
-                    break;
-
-                  case 14:
-                    _context7.next = 19;
-                    break;
-
-                  case 16:
-                    _context7.prev = 16;
-                    _context7.t0 = _context7["catch"](1);
-
-                    _iterator.e(_context7.t0);
-
-                  case 19:
-                    _context7.prev = 19;
-
-                    _iterator.f();
-
-                    return _context7.finish(19);
-
-                  case 22:
-                  case "end":
-                    return _context7.stop();
-                }
-              }
-            }, _callee7, this, [[1, 16, 19, 22]]);
-          }));
-        }
-      }, {
-        key: "setPathGo",
-        value: function setPathGo(p) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
-            var _iterator2, _step2, item;
+            var _iterator, _step, item;
 
             return regeneratorRuntime.wrap(function _callee8$(_context8) {
               while (1) {
                 switch (_context8.prev = _context8.next) {
                   case 0:
-                    _iterator2 = _createForOfIteratorHelper(this.placeEndAll);
+                    _iterator = _createForOfIteratorHelper(this.placeEndAll);
                     _context8.prev = 1;
 
-                    _iterator2.s();
+                    _iterator.s();
 
                   case 3:
-                    if ((_step2 = _iterator2.n()).done) {
-                      _context8.next = 12;
+                    if ((_step = _iterator.n()).done) {
+                      _context8.next = 16;
                       break;
                     }
 
-                    item = _step2.value;
+                    item = _step.value;
                     _context8.next = 7;
                     return this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
 
                   case 7:
                     _context8.next = 9;
-                    return this.sleep(1000);
+                    return this.sleep(3000);
+
+                  case 9:
+                    _context8.next = 11;
+                    return this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
+
+                  case 11:
+                    _context8.next = 13;
+                    return this.sleep(3000);
+
+                  case 13:
+                    p++;
+
+                  case 14:
+                    _context8.next = 3;
+                    break;
+
+                  case 16:
+                    _context8.next = 21;
+                    break;
+
+                  case 18:
+                    _context8.prev = 18;
+                    _context8.t0 = _context8["catch"](1);
+
+                    _iterator.e(_context8.t0);
+
+                  case 21:
+                    _context8.prev = 21;
+
+                    _iterator.f();
+
+                    return _context8.finish(21);
+
+                  case 24:
+                    return _context8.abrupt("return", true);
+
+                  case 25:
+                  case "end":
+                    return _context8.stop();
+                }
+              }
+            }, _callee8, this, [[1, 18, 21, 24]]);
+          }));
+        }
+      }, {
+        key: "setPathGo",
+        value: function setPathGo(p) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+            var _iterator2, _step2, item;
+
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+              while (1) {
+                switch (_context9.prev = _context9.next) {
+                  case 0:
+                    _iterator2 = _createForOfIteratorHelper(this.placeEndAll);
+                    _context9.prev = 1;
+
+                    _iterator2.s();
+
+                  case 3:
+                    if ((_step2 = _iterator2.n()).done) {
+                      _context9.next = 12;
+                      break;
+                    }
+
+                    item = _step2.value;
+                    _context9.next = 7;
+                    return this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+
+                  case 7:
+                    _context9.next = 9;
+                    return this.sleep(500);
 
                   case 9:
                     p++;
 
                   case 10:
-                    _context8.next = 3;
+                    _context9.next = 3;
                     break;
 
                   case 12:
-                    _context8.next = 17;
+                    _context9.next = 17;
                     break;
 
                   case 14:
-                    _context8.prev = 14;
-                    _context8.t0 = _context8["catch"](1);
+                    _context9.prev = 14;
+                    _context9.t0 = _context9["catch"](1);
 
-                    _iterator2.e(_context8.t0);
+                    _iterator2.e(_context9.t0);
 
                   case 17:
-                    _context8.prev = 17;
+                    _context9.prev = 17;
 
                     _iterator2.f();
 
-                    return _context8.finish(17);
+                    return _context9.finish(17);
 
                   case 20:
                   case "end":
-                    return _context8.stop();
+                    return _context9.stop();
                 }
               }
-            }, _callee8, this, [[1, 14, 17, 20]]);
+            }, _callee9, this, [[1, 14, 17, 20]]);
           }));
         }
       }, {
@@ -746,13 +772,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setDistanceGo",
         value: function setDistanceGo(placeEnd, placeNo) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
-            var _this6 = this;
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+            var _this7 = this;
 
             var service;
-            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
               while (1) {
-                switch (_context10.prev = _context10.next) {
+                switch (_context11.prev = _context11.next) {
                   case 0:
                     service = new google.maps.DistanceMatrixService(); //console.log(placeEnd);
 
@@ -762,47 +788,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       travelMode: "DRIVING"
                     }, function (response, status) {
                       if (status = "OK") {
-                        //console.log(response);
-                        //console.log(status);
-                        _this6.pathStart = response.rows[0].elements;
+                        console.log("ขาไป" + response); //console.log(status);
 
-                        _this6.pathStart.forEach(function (item, index) {
-                          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this6, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+                        _this7.pathStart = response.rows[0].elements;
+
+                        _this7.pathStart.forEach(function (item, index) {
+                          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this7, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
                             var formData, fare, httpRespon;
-                            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                            return regeneratorRuntime.wrap(function _callee10$(_context10) {
                               while (1) {
-                                switch (_context9.prev = _context9.next) {
+                                switch (_context10.prev = _context10.next) {
                                   case 0:
                                     //console.log(item.distance);
                                     formData = new FormData();
-                                    _context9.next = 3;
+                                    _context10.next = 3;
                                     return Math.ceil(item.distance.value * 6 / 1000 + 52.5);
 
                                   case 3:
-                                    fare = _context9.sent;
+                                    fare = _context10.sent;
                                     formData.append("firstPath", this.placeAll[this.placeAll.length - 1].placeNo);
                                     formData.append("endPath", placeNo[index]);
                                     formData.append("distance", item.distance.value);
                                     formData.append("distanceText", item.distance.text);
                                     formData.append("fare", fare + "");
-                                    console.log("first : " + this.placeAll[this.placeAll.length - 1].placeNo + " end : " + placeNo[index]);
-                                    _context9.next = 12;
+                                    _context10.next = 11;
                                     return this.http.post("setPath", formData);
 
-                                  case 12:
-                                    httpRespon = _context9.sent;
+                                  case 11:
+                                    httpRespon = _context10.sent;
 
                                     //console.log(httpRespon);
-                                    if (httpRespon.response.success) {//console.log(httpRespon.response.message);
-                                    } else {//console.log(httpRespon.response.message);
-                                      }
+                                    if (httpRespon.response.success) {
+                                      console.log("first : " + this.placeAll[this.placeAll.length - 1].placeNo + " end : " + placeNo[index]); //console.log(httpRespon.response.message);
+                                    } else {
+                                      console.log(httpRespon.response.message);
+                                    }
 
-                                  case 14:
+                                  case 13:
                                   case "end":
-                                    return _context9.stop();
+                                    return _context10.stop();
                                 }
                               }
-                            }, _callee9, this);
+                            }, _callee10, this);
                           }));
                         });
                       } else {//console.log(status);
@@ -811,22 +838,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 2:
                   case "end":
-                    return _context10.stop();
+                    return _context11.stop();
                 }
               }
-            }, _callee10, this);
+            }, _callee11, this);
           }));
         }
       }, {
         key: "setDistanceBlack",
         value: function setDistanceBlack(placeEnd, placeNo) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
-            var _this7 = this;
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+            var _this8 = this;
 
             var service;
-            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
-                switch (_context12.prev = _context12.next) {
+                switch (_context13.prev = _context13.next) {
                   case 0:
                     service = new google.maps.DistanceMatrixService(); //console.log(placeEnd);
 
@@ -836,47 +863,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       travelMode: "DRIVING"
                     }, function (response, status) {
                       if (status = "OK") {
-                        console.log(response);
-                        _this7.pathEnd = response.rows;
+                        console.log("ขากลับ" + response);
+                        _this8.pathEnd = response.rows;
 
-                        _this7.pathEnd.forEach(function (item, index) {
-                          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this7, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+                        _this8.pathEnd.forEach(function (item, index) {
+                          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this8, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
                             var formData, fare, httpRespon;
-                            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+                            return regeneratorRuntime.wrap(function _callee12$(_context12) {
                               while (1) {
-                                switch (_context11.prev = _context11.next) {
+                                switch (_context12.prev = _context12.next) {
                                   case 0:
                                     //console.log(item.elements[0].distance);
                                     formData = new FormData();
-                                    _context11.next = 3;
+                                    _context12.next = 3;
                                     return Math.ceil(item.elements[0].distance.value * 6 / 1000 + 52.5);
 
                                   case 3:
-                                    fare = _context11.sent;
+                                    fare = _context12.sent;
                                     formData.append("firstPath", placeNo[index]);
                                     formData.append("endPath", this.placeAll[this.placeAll.length - 1].placeNo);
                                     formData.append("distance", item.elements[0].distance.value);
                                     formData.append("distanceText", item.elements[0].distance.text);
                                     formData.append("fare", fare + "");
-                                    console.log("first : " + placeNo[index] + " end : " + this.placeAll[this.placeAll.length - 1].placeNo);
-                                    _context11.next = 12;
+                                    _context12.next = 11;
                                     return this.http.post("setPath", formData);
 
-                                  case 12:
-                                    httpRespon = _context11.sent;
+                                  case 11:
+                                    httpRespon = _context12.sent;
 
                                     //console.log(httpRespon);
-                                    if (httpRespon.response.success) {//console.log(httpRespon.response.message);
+                                    if (httpRespon.response.success) {
+                                      console.log("first : " + placeNo[index] + " end : " + this.placeAll[this.placeAll.length - 1].placeNo); //console.log(httpRespon.response.message);
                                     } else {
                                       console.log(httpRespon.response.message);
                                     }
 
-                                  case 14:
+                                  case 13:
                                   case "end":
-                                    return _context11.stop();
+                                    return _context12.stop();
                                 }
                               }
-                            }, _callee11, this);
+                            }, _callee12, this);
                           }));
                         });
                       } else {//console.log(status);
@@ -887,45 +914,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 2:
                   case "end":
-                    return _context12.stop();
+                    return _context13.stop();
                 }
               }
-            }, _callee12, this);
+            }, _callee13, this);
           }));
         } /////////////////////
 
       }, {
         key: "onFileSelected",
         value: function onFileSelected(event) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
-            var _this8 = this;
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+            var _this9 = this;
 
             var mimeType, reader;
-            return regeneratorRuntime.wrap(function _callee13$(_context13) {
+            return regeneratorRuntime.wrap(function _callee14$(_context14) {
               while (1) {
-                switch (_context13.prev = _context13.next) {
+                switch (_context14.prev = _context14.next) {
                   case 0:
                     this.selectedFile = event.target.files[0]; //console.log(event.target.files);
                     //console.log(this.selectedFile);
 
                     if (!(event.target.files.length === 0)) {
-                      _context13.next = 4;
+                      _context14.next = 4;
                       break;
                     }
 
                     sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("กรุณาเลือกไฟล์", "", "error");
-                    return _context13.abrupt("return");
+                    return _context14.abrupt("return");
 
                   case 4:
                     mimeType = event.target.files[0].type;
 
                     if (!(mimeType.match(/image\/*/) == null)) {
-                      _context13.next = 8;
+                      _context14.next = 8;
                       break;
                     }
 
                     sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("กรุณาเลือกไฟล์รูปภาพ", "", "error");
-                    return _context13.abrupt("return");
+                    return _context14.abrupt("return");
 
                   case 8:
                     this.lastNameFile = this.selectedFile.name.split(".");
@@ -936,15 +963,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     reader.readAsDataURL(event.target.files[0]);
 
                     reader.onload = function (_event) {
-                      _this8.imgURL = reader.result;
+                      _this9.imgURL = reader.result;
                     };
 
                   case 14:
                   case "end":
-                    return _context13.stop();
+                    return _context14.stop();
                 }
               }
-            }, _callee13, this);
+            }, _callee14, this);
           }));
         }
       }]);

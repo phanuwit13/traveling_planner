@@ -6145,8 +6145,8 @@ window.__Zone_disable_customElements = true;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /media/big/E4969E77969E49C6/project/fail/traveling_planner/src/polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! /media/big/E4969E77969E49C6/project/fail/traveling_planner/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+__webpack_require__(/*! C:\project\fail\traveling_planner\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! C:\project\fail\traveling_planner\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
 
 /***/ })

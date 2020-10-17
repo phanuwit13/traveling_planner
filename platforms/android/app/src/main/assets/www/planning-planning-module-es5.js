@@ -185,7 +185,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL3BsYW5uaW5nL3BsYW5uaW5nLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9wbGFubmluZy9wbGFubmluZy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7QUNERjs7QURJQTtFQUNFLHlCQUFBO0FDREY7O0FER0E7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNBRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvcGxhbm5pbmcvcGxhbm5pbmcucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGJnOiAjZmZmZmZmO1xuXG4jY29udGFpbmVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xufVxuXG5pb24tY29udGVudCBpb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNsdWNlbnQ7XG59XG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG4iLCIjY29udGFpbmVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xufVxuXG5pb24tY29udGVudCBpb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNsdWNlbnQ7XG59XG5cbmlvbi10aXRsZSB7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbn0iXX0= */";
+    __webpack_exports__["default"] = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9wbGFubmluZy9DOlxccHJvamVjdFxcZmFpbFxcdHJhdmVsaW5nX3BsYW5uZXIvc3JjXFxhcHBcXGhvbWVcXHBsYW5uaW5nXFxwbGFubmluZy5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvcGxhbm5pbmcvcGxhbm5pbmcucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0Usa0JBQUE7RUFDQSxrQkFBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0FDREY7O0FESUE7RUFDRSx5QkFBQTtBQ0RGOztBREdBO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0FDQUYiLCJmaWxlIjoic3JjL2FwcC9ob21lL3BsYW5uaW5nL3BsYW5uaW5nLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRiZzogI2ZmZmZmZjtcblxuI2NvbnRhaW5lciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuaW9uLXRpdGxlIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBmb250LXdlaWdodDogNDAwO1xufVxuIiwiI2NvbnRhaW5lciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59Il19 */";
     /***/
   },
 
@@ -579,23 +579,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 9:
                     //console.log(this.cost);
                     this.http.navRouter("/home/planning/resulte");
-                    _context9.next = 12;
-                    return Math.ceil(this.sumDistance / ((this.noSort.length - 1) * 1000));
-
-                  case 12:
-                    this.sumDistance = _context9.sent;
-                    _context9.next = 15;
+                    this.sumDistance = this.sumDistance / 1000;
+                    _context9.next = 13;
                     return this.addItem(this.noSort);
 
-                  case 15:
-                    _context9.next = 17;
+                  case 13:
+                    _context9.next = 15;
                     return this.addItem(this.cost);
 
-                  case 17:
-                    this.addItem(this.sumDistance);
+                  case 15:
+                    this.addItem(this.sumDistance.toFixed(2));
                     this.clearData();
 
-                  case 19:
+                  case 17:
                   case "end":
                     return _context9.stop();
                 }
@@ -620,7 +616,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 3:
                     if (!(i < this.distance.length)) {
-                      _context10.next = 22;
+                      _context10.next = 23;
                       break;
                     }
 
@@ -628,38 +624,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 5:
                     if (!(j < this.placeToGo.length)) {
-                      _context10.next = 19;
+                      _context10.next = 20;
                       break;
                     }
 
                     if (!(this.distance[i].endPath == this.placeToGo[j].placeNo && this.distance[i].distance != "0")) {
-                      _context10.next = 16;
+                      _context10.next = 17;
                       break;
                     }
 
                     this.cost += parseInt(this.distance[i].fare);
-                    this.sumDistance += parseInt(this.distance[i].distance);
+                    this.sumDistance += parseFloat(this.distance[i].distance);
+                    console.log(this.sumDistance);
                     this.noSort.push(this.placeToGo[j]);
-                    _context10.next = 12;
+                    _context10.next = 13;
                     return this.placeToGo[j].placeNo;
 
-                  case 12:
+                  case 13:
                     this.point_start = _context10.sent;
                     this.placeToGo.splice(j, 1);
                     i = this.distance.length + 1;
-                    return _context10.abrupt("break", 19);
+                    return _context10.abrupt("break", 20);
 
-                  case 16:
+                  case 17:
                     j++;
                     _context10.next = 5;
                     break;
 
-                  case 19:
+                  case 20:
                     i++;
                     _context10.next = 3;
                     break;
 
-                  case 22:
+                  case 23:
                   case "end":
                     return _context10.stop();
                 }

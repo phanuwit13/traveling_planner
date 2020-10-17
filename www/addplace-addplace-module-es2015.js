@@ -102,7 +102,7 @@ AddplacePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 80%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tZWRpYS9iaWcvRTQ5NjlFNzc5NjlFNDlDNi9wcm9qZWN0L2ZhaWwvdHJhdmVsaW5nX3BsYW5uZXIvc3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLE9BQUE7RUFDQSxRQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QUNDRjs7QURFQTtFQUNFLHlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNFRjs7QURBQTtFQUNFLFdBQUE7QUNHRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvYWRtaW4vaG9tZWFkbWluL2FkZHBsYWNlL2FkZHBsYWNlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuI21hcF9jYW52YXMge1xuICBoZWlnaHQ6IDgwJTtcbn1cbiIsIiNjb250YWluZXIge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5sZyB7XG4gIGZvbnQtc2l6ZTogMTAwcHg7XG4gIG1hcmdpbi10b3A6IDEwJTtcbiAgY29sb3I6ICM0YzhkZmY7XG59XG5cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA4MCU7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("#container {\n  left: 0;\n  right: 0;\n  height: 100%;\n  text-align: center;\n  position: absolute;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.lg {\n  font-size: 100px;\n  margin-top: 10%;\n  color: #4c8dff;\n}\n\n#map_canvas {\n  height: 80%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9hZG1pbi9ob21lYWRtaW4vYWRkcGxhY2UvQzpcXHByb2plY3RcXGZhaWxcXHRyYXZlbGluZ19wbGFubmVyL3NyY1xcYXBwXFxob21lXFxhZG1pblxcaG9tZWFkbWluXFxhZGRwbGFjZVxcYWRkcGxhY2UucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0FDQ0Y7O0FERUE7RUFDRSx5QkFBQTtBQ0NGOztBREVBO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDRUY7O0FEQUE7RUFDRSxXQUFBO0FDR0YiLCJmaWxlIjoic3JjL2FwcC9ob21lL2FkbWluL2hvbWVhZG1pbi9hZGRwbGFjZS9hZGRwbGFjZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjY29udGFpbmVyIHtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGhlaWdodDogMTAwJTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59XG5cbmlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cblxuaW9uLXRpdGxlIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBmb250LXdlaWdodDogNDAwO1xufVxuLmxnIHtcbiAgZm9udC1zaXplOiAxMDBweDtcbiAgbWFyZ2luLXRvcDogMTAlO1xuICBjb2xvcjogIzRjOGRmZjtcbn1cbiNtYXBfY2FudmFzIHtcbiAgaGVpZ2h0OiA4MCU7XG59XG4iLCIjY29udGFpbmVyIHtcbiAgbGVmdDogMDtcbiAgcmlnaHQ6IDA7XG4gIGhlaWdodDogMTAwJTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59XG5cbmlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cblxuaW9uLXRpdGxlIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBmb250LXdlaWdodDogNDAwO1xufVxuXG4ubGcge1xuICBmb250LXNpemU6IDEwMHB4O1xuICBtYXJnaW4tdG9wOiAxMCU7XG4gIGNvbG9yOiAjNGM4ZGZmO1xufVxuXG4jbWFwX2NhbnZhcyB7XG4gIGhlaWdodDogODAlO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -239,12 +239,13 @@ let AddplacePage = class AddplacePage {
                     let httpRespon = yield this.http.post("setPlace", formData);
                     //console.log(httpRespon);
                     if (httpRespon.response.success) {
-                        yield sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("สำเร็จ", httpRespon.response.message + " !", "success").then(() => {
+                        this.setPath().then(() => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                             this.loading.dismiss();
-                            this.setPath();
-                            this.form_place.reset();
-                            this.http.navRouter("/home/admin/homeadmin");
-                        });
+                            yield sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("สำเร็จ", httpRespon.response.message + " !", "success").then(() => {
+                                this.form_place.reset();
+                                this.http.navRouter("/home/admin/homeadmin");
+                            });
+                        }));
                     }
                     else {
                         sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("ผิดพลาด", httpRespon.response.message + " !", "error").then(() => {
@@ -301,29 +302,32 @@ let AddplacePage = class AddplacePage {
             }));
             if (this.placeAll.length > 1) {
                 let p = 0;
-                this.setPathGoBlack(p);
+                yield this.setPathGoBlack(p);
             }
             else {
                 let p = 0;
-                this.setPathGo(p);
+                yield this.setPathGo(p);
             }
+            return true;
         });
     }
     setPathGoBlack(p) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             for (let item of this.placeEndAll) {
                 yield this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
+                yield this.sleep(3000);
                 yield this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
-                yield this.sleep(1000);
+                yield this.sleep(3000);
                 p++;
             }
+            return true;
         });
     }
     setPathGo(p) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             for (let item of this.placeEndAll) {
                 yield this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
-                yield this.sleep(1000);
+                yield this.sleep(500);
                 p++;
             }
         });
@@ -341,7 +345,7 @@ let AddplacePage = class AddplacePage {
                 travelMode: "DRIVING",
             }, (response, status) => {
                 if ((status = "OK")) {
-                    //console.log(response);
+                    console.log("ขาไป" + response);
                     //console.log(status);
                     this.pathStart = response.rows[0].elements;
                     this.pathStart.forEach((item, index) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
@@ -353,17 +357,17 @@ let AddplacePage = class AddplacePage {
                         formData.append("distance", item.distance.value);
                         formData.append("distanceText", item.distance.text);
                         formData.append("fare", fare + "");
-                        console.log("first : " +
-                            this.placeAll[this.placeAll.length - 1].placeNo +
-                            " end : " +
-                            placeNo[index]);
                         let httpRespon = yield this.http.post("setPath", formData);
                         //console.log(httpRespon);
                         if (httpRespon.response.success) {
+                            console.log("first : " +
+                                this.placeAll[this.placeAll.length - 1].placeNo +
+                                " end : " +
+                                placeNo[index]);
                             //console.log(httpRespon.response.message);
                         }
                         else {
-                            //console.log(httpRespon.response.message);
+                            console.log(httpRespon.response.message);
                         }
                     }));
                 }
@@ -383,7 +387,7 @@ let AddplacePage = class AddplacePage {
                 travelMode: "DRIVING",
             }, (response, status) => {
                 if ((status = "OK")) {
-                    console.log(response);
+                    console.log("ขากลับ" + response);
                     this.pathEnd = response.rows;
                     this.pathEnd.forEach((item, index) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                         //console.log(item.elements[0].distance);
@@ -394,13 +398,13 @@ let AddplacePage = class AddplacePage {
                         formData.append("distance", item.elements[0].distance.value);
                         formData.append("distanceText", item.elements[0].distance.text);
                         formData.append("fare", fare + "");
-                        console.log("first : " +
-                            placeNo[index] +
-                            " end : " +
-                            this.placeAll[this.placeAll.length - 1].placeNo);
                         let httpRespon = yield this.http.post("setPath", formData);
                         //console.log(httpRespon);
                         if (httpRespon.response.success) {
+                            console.log("first : " +
+                                placeNo[index] +
+                                " end : " +
+                                this.placeAll[this.placeAll.length - 1].placeNo);
                             //console.log(httpRespon.response.message);
                         }
                         else {

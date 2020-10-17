@@ -1,6 +1,7 @@
 import { HttpService } from "./../../services/http.service";
 import { Component, OnInit, HostListener } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { Platform, LoadingController } from "@ionic/angular";
 import Swal from "sweetalert2";
 
 @Component({
@@ -10,6 +11,7 @@ import Swal from "sweetalert2";
 })
 export class PlanningPage implements OnInit {
   public form_planning: FormGroup;
+  loading: any;
   public placeData: Array<any> = null;
   public categoryData: Array<any> = null;
   public no: Array<any> = [];
@@ -20,7 +22,7 @@ export class PlanningPage implements OnInit {
   list = [];
   public cost: number = 0;
   public sumDistance: number = 0;
-  constructor(private http: HttpService, private formBuilder: FormBuilder) {}
+  constructor(private http: HttpService, private formBuilder: FormBuilder,public loadingCtrl: LoadingController,) {}
 
   @HostListener("document:ionBackButton", ["$event"])
   private async overrideHardwareBackAction($event: any) {
@@ -81,6 +83,11 @@ export class PlanningPage implements OnInit {
         "warning"
       );
     }
+    console.log("สถานที่ทั้งหมด")
+    console.log(this.no);
+    console.log("สถานที่ ที่จะไป")
+    console.log(this.placeToGo)
+    
   }
 
   delPlace(value) {
@@ -134,6 +141,10 @@ export class PlanningPage implements OnInit {
   }
 
   async testSort() {
+    this.loading = await this.loadingCtrl.create({
+      message: "Please wait...",
+    });
+    await this.loading.present();
     this.point_start = this.form_planning.controls["point_start"].value.placeNo;
     this.noSort.push(this.form_planning.controls["point_start"].value);
     for (let i = 0; i < this.no.length; i++) {
@@ -147,6 +158,7 @@ export class PlanningPage implements OnInit {
     await this.addItem(this.cost);
     this.addItem(this.sumDistance.toFixed(2));
     this.clearData();
+    this.loading.dismiss();
   }
 
   async loopPlace(start: any) {

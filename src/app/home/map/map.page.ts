@@ -75,6 +75,8 @@ export class MapPage implements OnInit {
         this.marker.setMap(null);
         this.routPath(this.currentLocation);
       }
+      console.log(this.list);
+      
       this.map.setCenter(this.currentLocation);
       this.loading.dismiss();
     });
@@ -111,7 +113,7 @@ export class MapPage implements OnInit {
           lng: parseFloat(this.list[0][n - 1].longitude),
         },
         waypoints: waypts,
-        optimizeWaypoints: true,
+        optimizeWaypoints: false,
         travelMode: "DRIVING",
       },
       async (response, status) => {

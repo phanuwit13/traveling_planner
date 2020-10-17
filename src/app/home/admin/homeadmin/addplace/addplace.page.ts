@@ -220,9 +220,9 @@ export class AddplacePage implements OnInit {
   async setPathGoBlack(p) {
     for (let item of this.placeEndAll) {
       await this.setDistanceGo(this.placeEndAll[p], this.placeNo[p]);
-      await this.sleep(1000);
+      await this.sleep(3000);
       await this.setDistanceBlack(this.placeEndAll[p], this.placeNo[p]);
-      await this.sleep(1000);
+      await this.sleep(3000);
       p++;
     }
     return true;
