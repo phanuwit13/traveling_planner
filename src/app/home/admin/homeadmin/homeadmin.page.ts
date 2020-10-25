@@ -15,6 +15,7 @@ export class HomeadminPage implements OnInit {
   public place: Array<any> = null;
   public key = new FormControl();
   public categoryData: Array<any> = null;
+  public other = { categoryNo: 8, categoryTH: "อื่นๆ" };
   list = [];
   constructor(
     private http: HttpService,
@@ -68,6 +69,7 @@ export class HomeadminPage implements OnInit {
     setTimeout(() => {
       //console.log("Async operation has ended");
       this.getPlace();
+      this.getCategory();
       event.target.complete();
     }, 1000);
     this.place = null;
@@ -110,6 +112,10 @@ export class HomeadminPage implements OnInit {
     //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.categoryData = await httpRespon.response.data;
+      this.categoryData = this.categoryData.filter((item) => {
+        return item.categoryNo != 8;
+      });
+      this.categoryData.push(this.other);
     } else {
       this.categoryData = null;
     }

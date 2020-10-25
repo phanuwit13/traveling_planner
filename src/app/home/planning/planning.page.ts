@@ -19,7 +19,9 @@ export class PlanningPage implements OnInit {
   public distance: Array<any> = [];
   public point_start: Array<any> = [];
   public placeToGo: Array<any> = [];
+  public other = { categoryNo: 8, categoryTH: "อื่นๆ" };
   list = [];
+  placeDistance = [];
   public cost: number = 0;
   public sumDistance: number = 0;
   constructor(private http: HttpService, private formBuilder: FormBuilder,public loadingCtrl: LoadingController,) {}
@@ -130,16 +132,22 @@ export class PlanningPage implements OnInit {
       this.placeData = null;
     }
   }
+
   async getCategory() {
     let httpRespon: any = await this.http.post("getCategory");
     //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.categoryData = await httpRespon.response.data;
+      this.categoryData = this.categoryData.filter((item) => {
+        return item.categoryNo != 8;
+      });
+      this.categoryData.push(this.other);
     } else {
       this.categoryData = null;
     }
+    console.log(this.categoryData);
+    
   }
-
   async testSort() {
     this.loading = await this.loadingCtrl.create({
       message: "Please wait...",
@@ -154,9 +162,10 @@ export class PlanningPage implements OnInit {
     //console.log(this.cost);
     this.http.navRouter("/home/planning/resulte");
     this.sumDistance = this.sumDistance / 1000;
-    await this.addItem(this.noSort);
+    await this.addItem(this.noSort)
     await this.addItem(this.cost);
-    this.addItem(this.sumDistance.toFixed(2));
+    await this.addItem(this.sumDistance.toFixed(2));
+    await this.addItem(this.placeDistance);
     this.clearData();
     this.loading.dismiss();
   }
@@ -171,6 +180,7 @@ export class PlanningPage implements OnInit {
         ) {
           this.cost += parseInt(this.distance[i].fare);
           this.sumDistance += parseFloat(this.distance[i].distance);
+          this.placeDistance.push((parseFloat(this.distance[i].distance)/1000).toFixed(2));
           console.log(this.sumDistance);
           this.noSort.push(this.placeToGo[j]);
           this.point_start = await this.placeToGo[j].placeNo;

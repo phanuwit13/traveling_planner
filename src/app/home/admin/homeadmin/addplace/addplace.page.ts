@@ -24,6 +24,7 @@ export class AddplacePage implements OnInit {
   public placeNo = [];
   public distance = "";
   public lastNameFile: Array<any> = [];
+  public other = { categoryNo: 8, categoryTH: "อื่นๆ" };
   public marker: any;
   loading: any;
   public fileName = null;
@@ -168,14 +169,30 @@ export class AddplacePage implements OnInit {
       }
     });
   }
+  // async getCategory() {
+  //   let httpRespon: any = await this.http.post("getCategory");
+  //   //console.log(httpRespon);
+  //   if (httpRespon.response.success) {
+  //     this.categoryData = await httpRespon.response.data;
+  //   } else {
+  //     this.categoryData = null;
+  //   }
+  // }
+
   async getCategory() {
     let httpRespon: any = await this.http.post("getCategory");
     //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.categoryData = await httpRespon.response.data;
+      this.categoryData = this.categoryData.filter((item) => {
+        return item.categoryNo != 8;
+      });
+      this.categoryData.push(this.other);
     } else {
       this.categoryData = null;
     }
+    console.log(this.categoryData);
+    
   }
 
   async setPath() {

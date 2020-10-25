@@ -15,18 +15,18 @@
     <div class="detail">
       <div class="box left">
         <div class="one"><ion-icon name="car-sport-sharp"></ion-icon></div>
-        <div class="two"><h3 style="color: white;">{{list[2]}} กม.</h3></div>
+        <div class="two"><h3 style="color: white">{{distance}} กม.</h3></div>
       </div>
       <div class="box right">
         <div class="one"><ion-icon name="logo-usd"></ion-icon></div>
-        <div class="two" *ngIf="list != []">
-          <h3 style="color: white;">{{list[1]}} บาท</h3>
+        <div class="two" *ngIf="place != []">
+          <h3 style="color: white">{{cost}} บาท</h3>
         </div>
       </div>
     </div>
-    <div *ngFor="let item of list[0] ;let i = index">
+    <div *ngFor="let item of place ;let i = index">
       <ion-card>
-        <ion-item>
+        <ion-item (click)="openModal();addItem(item)">
           <ion-thumbnail class="img" slot="start">
             <img
               src="http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{item.img}}"
@@ -39,10 +39,25 @@
           </ion-label>
         </ion-item>
       </ion-card>
-
       <ion-icon
-        *ngIf="i+1 != list[0].length "
-        style="font-size: 30px; color: #4c8dff;"
+        *ngIf="i+1 != place.length "
+        style="font-size: 20px; color: #4c8dff"
+        name="arrow-down-outline"
+      ></ion-icon>
+      <p
+        *ngIf="i+1 != place.length "
+        style="
+          font-size: 20px;
+          color: #4c8dff;
+          margin-top: -2px;
+          margin-bottom: -1px;
+        "
+      >
+        {{placeDistance[i]}} กม.
+      </p>
+      <ion-icon
+        *ngIf="i+1 != place.length "
+        style="font-size: 20px; color: #4c8dff"
         name="arrow-down-outline"
       ></ion-icon>
     </div>
@@ -51,6 +66,7 @@
 <ion-footer>
   <section class="full-width">
     <ion-button
+      (click)="addItemLast()"
       [routerLink]="['/home/map']"
       mode="ios"
       expand="block"
