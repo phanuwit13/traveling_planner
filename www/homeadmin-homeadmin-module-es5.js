@@ -276,6 +276,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.place = null;
         this.key = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]();
         this.categoryData = null;
+        this.other = {
+          categoryNo: 8,
+          categoryTH: "อื่นๆ"
+        };
         this.list = [];
       }
 
@@ -416,6 +420,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             //console.log("Async operation has ended");
             _this2.getPlace();
 
+            _this2.getCategory();
+
             event.target.complete();
           }, 1000);
           this.place = null;
@@ -539,7 +545,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     httpRespon = _context8.sent;
 
                     if (!httpRespon.response.success) {
-                      _context8.next = 9;
+                      _context8.next = 11;
                       break;
                     }
 
@@ -548,13 +554,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 6:
                     this.categoryData = _context8.sent;
-                    _context8.next = 10;
+                    this.categoryData = this.categoryData.filter(function (item) {
+                      return item.categoryNo != 8;
+                    });
+                    this.categoryData.push(this.other);
+                    _context8.next = 12;
                     break;
 
-                  case 9:
+                  case 11:
                     this.categoryData = null;
 
-                  case 10:
+                  case 12:
                   case "end":
                     return _context8.stop();
                 }

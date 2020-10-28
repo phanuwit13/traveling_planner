@@ -188,6 +188,7 @@ let MapPage = class MapPage {
                     this.marker.setMap(null);
                     this.routPath(this.currentLocation);
                 }
+                console.log(this.list);
                 this.map.setCenter(this.currentLocation);
                 this.loading.dismiss();
             }));
@@ -223,7 +224,7 @@ let MapPage = class MapPage {
                 lng: parseFloat(this.list[0][n - 1].longitude),
             },
             waypoints: waypts,
-            optimizeWaypoints: true,
+            optimizeWaypoints: false,
             travelMode: "DRIVING",
         }, (response, status) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             if (status === "OK") {

@@ -200,6 +200,8 @@ export class PlanningPage implements OnInit {
     //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.distance = httpRespon.response.data;
+      console.log("ก่อนเรียง");
+      console.log(this.distance);
     } else {
       this.distance = null;
     }
@@ -207,7 +209,8 @@ export class PlanningPage implements OnInit {
     this.distance.sort((a: any, b: any) =>
       parseFloat(a.distance) < parseFloat(b.distance) ? -1 : 0
     );
-    //console.log(this.distance);
+    console.log("หลังเรียง");
+    console.log(this.distance);
   }
   clearData() {
     this.no = [];

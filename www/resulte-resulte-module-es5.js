@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <!-- <ion-icon name=\"chevron-back-outline\">Black</ion-icon> -->\n      <ion-back-button\n        (click)=\"closePlan()\"\n        [routerLink]=\"['/home/planning']\"\n      ></ion-back-button>\n    </ion-buttons>\n    <ion-title>Resulte</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"md\" [fullscreen]=\"false\">\n  <div id=\"container\">\n    <div class=\"detail\">\n      <div class=\"box left\">\n        <div class=\"one\"><ion-icon name=\"car-sport-sharp\"></ion-icon></div>\n        <div class=\"two\"><h3 style=\"color: white;\">{{list[2]}} กม.</h3></div>\n      </div>\n      <div class=\"box right\">\n        <div class=\"one\"><ion-icon name=\"logo-usd\"></ion-icon></div>\n        <div class=\"two\" *ngIf=\"list != []\">\n          <h3 style=\"color: white;\">{{list[1]}} บาท</h3>\n        </div>\n      </div>\n    </div>\n    <div *ngFor=\"let item of list[0] ;let i = index\">\n      <ion-card>\n        <ion-item>\n          <ion-thumbnail class=\"img\" slot=\"start\">\n            <img\n              src=\"http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{item.img}}\"\n            />\n          </ion-thumbnail>\n          <ion-label>\n            <h2>{{item.placeTH}}</h2>\n            <h3>{{item.categoryTH}}</h3>\n            <p>{{item.detail}}</p>\n          </ion-label>\n        </ion-item>\n      </ion-card>\n\n      <ion-icon\n        *ngIf=\"i+1 != list[0].length \"\n        style=\"font-size: 30px; color: #4c8dff;\"\n        name=\"arrow-down-outline\"\n      ></ion-icon>\n    </div>\n  </div>\n</ion-content>\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      [routerLink]=\"['/home/map']\"\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      >Get Route</ion-button\n    >\n  </section>\n</ion-footer>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <!-- <ion-icon name=\"chevron-back-outline\">Black</ion-icon> -->\n      <ion-back-button\n        (click)=\"closePlan()\"\n        [routerLink]=\"['/home/planning']\"\n      ></ion-back-button>\n    </ion-buttons>\n    <ion-title>Resulte</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content mode=\"md\" [fullscreen]=\"false\">\n  <div id=\"container\">\n    <div class=\"detail\">\n      <div class=\"box left\">\n        <div class=\"one\"><ion-icon name=\"car-sport-sharp\"></ion-icon></div>\n        <div class=\"two\"><h3 style=\"color: white\">{{distance}} กม.</h3></div>\n      </div>\n      <div class=\"box right\">\n        <div class=\"one\"><ion-icon name=\"logo-usd\"></ion-icon></div>\n        <div class=\"two\" *ngIf=\"place != []\">\n          <h3 style=\"color: white\">{{cost}} บาท</h3>\n        </div>\n      </div>\n    </div>\n    <div *ngFor=\"let item of place ;let i = index\">\n      <ion-card>\n        <ion-item (click)=\"openModal();addItem(item)\">\n          <ion-thumbnail class=\"img\" slot=\"start\">\n            <img\n              src=\"http://cpe.rmuti.ac.th/project/traveling_planner/api/img/{{item.img}}\"\n            />\n          </ion-thumbnail>\n          <ion-label>\n            <h2>{{item.placeTH}}</h2>\n            <h3>{{item.categoryTH}}</h3>\n            <p>{{item.detail}}</p>\n          </ion-label>\n        </ion-item>\n      </ion-card>\n      <ion-icon\n        *ngIf=\"i+1 != place.length \"\n        style=\"font-size: 20px; color: #4c8dff\"\n        name=\"arrow-down-outline\"\n      ></ion-icon>\n      <p\n        *ngIf=\"i+1 != place.length \"\n        style=\"\n          font-size: 20px;\n          color: #4c8dff;\n          margin-top: -2px;\n          margin-bottom: -1px;\n        \"\n      >\n        {{placeDistance[i]}} กม.\n      </p>\n      <ion-icon\n        *ngIf=\"i+1 != place.length \"\n        style=\"font-size: 20px; color: #4c8dff\"\n        name=\"arrow-down-outline\"\n      ></ion-icon>\n    </div>\n  </div>\n</ion-content>\n<ion-footer>\n  <section class=\"full-width\">\n    <ion-button\n      (click)=\"addItemLast()\"\n      [routerLink]=\"['/home/map']\"\n      mode=\"ios\"\n      expand=\"block\"\n      color=\"primary\"\n      >Get Route</ion-button\n    >\n  </section>\n</ion-footer>\n";
     /***/
   },
 
@@ -174,7 +174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  background: #ebebeb;\n  height: 100%;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.img {\n  width: 100% !important;\n  height: 100% !important;\n  max-width: 100px !important;\n  max-height: 100px !important;\n}\n\n.detail {\n  height: 50px;\n}\n\n.box {\n  width: 50%;\n  float: left;\n  height: 50px;\n}\n\n.left {\n  background-color: #3880ff;\n}\n\n.right {\n  background-color: #2dd36f;\n}\n\n.one {\n  height: 50px;\n  width: 30%;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.two {\n  height: 50px;\n  width: 60%;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\nion-icon {\n  font-size: 30px;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9wbGFubmluZy9yZXN1bHRlL0M6XFxwcm9qZWN0XFxmYWlsXFx0cmF2ZWxpbmdfcGxhbm5lci9zcmNcXGFwcFxcaG9tZVxccGxhbm5pbmdcXHJlc3VsdGVcXHJlc3VsdGUucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL3BsYW5uaW5nL3Jlc3VsdGUvcmVzdWx0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxtQkFQRztFQVFILFlBQUE7QUNERjs7QURJQTtFQUNFLHlCQUFBO0FDREY7O0FESUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNERjs7QURJQTtFQUNFLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSwyQkFBQTtFQUNBLDRCQUFBO0FDREY7O0FER0E7RUFDRSxZQUFBO0FDQUY7O0FERUE7RUFDRSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7QUNDRjs7QURDQTtFQUNFLHlCQUFBO0FDRUY7O0FEQUE7RUFDRSx5QkFBQTtBQ0dGOztBRERBO0VBQ0UsWUFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7QUNJRjs7QURGQTtFQUNFLFlBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0FDS0Y7O0FESEE7RUFDRSxlQUFBO0VBQ0EsWUFBQTtBQ01GIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9wbGFubmluZy9yZXN1bHRlL3Jlc3VsdGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGJnOiAjZWJlYmViO1xuXG4jY29udGFpbmVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBiYWNrZ3JvdW5kOiAkYmc7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5pbWcge1xuICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcbiAgbWF4LXdpZHRoOiAxMDBweCAhaW1wb3J0YW50OyAvL2FueSBzaXplXG4gIG1heC1oZWlnaHQ6IDEwMHB4ICFpbXBvcnRhbnQ7IC8vYW55IHNpemVcbn1cbi5kZXRhaWwge1xuICBoZWlnaHQ6IDUwcHg7XG59XG4uYm94IHtcbiAgd2lkdGg6IDUwJTtcbiAgZmxvYXQ6IGxlZnQ7XG4gIGhlaWdodDogNTBweDtcbn1cbi5sZWZ0IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzM4ODBmZjtcbn1cbi5yaWdodCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyZGQzNmY7XG59XG4ub25lIHtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogMzAlO1xuICBmbG9hdDogbGVmdDtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4udHdvIHtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogNjAlO1xuICBmbG9hdDogbGVmdDtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5pb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgY29sb3I6IHdoaXRlO1xufVxuIiwiI2NvbnRhaW5lciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZDogI2ViZWJlYjtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG5pb24tY29udGVudCBpb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNsdWNlbnQ7XG59XG5cbmlvbi10aXRsZSB7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbn1cblxuLmltZyB7XG4gIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogMTAwJSAhaW1wb3J0YW50O1xuICBtYXgtd2lkdGg6IDEwMHB4ICFpbXBvcnRhbnQ7XG4gIG1heC1oZWlnaHQ6IDEwMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5kZXRhaWwge1xuICBoZWlnaHQ6IDUwcHg7XG59XG5cbi5ib3gge1xuICB3aWR0aDogNTAlO1xuICBmbG9hdDogbGVmdDtcbiAgaGVpZ2h0OiA1MHB4O1xufVxuXG4ubGVmdCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzODgwZmY7XG59XG5cbi5yaWdodCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyZGQzNmY7XG59XG5cbi5vbmUge1xuICBoZWlnaHQ6IDUwcHg7XG4gIHdpZHRoOiAzMCU7XG4gIGZsb2F0OiBsZWZ0O1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLnR3byB7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDYwJTtcbiAgZmxvYXQ6IGxlZnQ7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5pb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgY29sb3I6IHdoaXRlO1xufSJdfQ== */";
+    __webpack_exports__["default"] = "#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  background: #ffffff;\n  height: 100%;\n}\n\nion-content ion-toolbar {\n  --background: translucent;\n}\n\nion-title {\n  font-size: 20px;\n  font-weight: 400;\n}\n\n.img {\n  width: 100% !important;\n  height: 100% !important;\n  max-width: 100px !important;\n  max-height: 100px !important;\n}\n\n.detail {\n  height: 50px;\n}\n\n.box {\n  width: 50%;\n  float: left;\n  height: 50px;\n}\n\n.left {\n  background-color: #3880ff;\n}\n\n.right {\n  background-color: #2dd36f;\n}\n\n.one {\n  height: 50px;\n  width: 30%;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.two {\n  height: 50px;\n  width: 60%;\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\nion-icon {\n  font-size: 30px;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9wbGFubmluZy9yZXN1bHRlL0M6XFxwcm9qZWN0XFxmYWlsXFx0cmF2ZWxpbmdfcGxhbm5lci9zcmNcXGFwcFxcaG9tZVxccGxhbm5pbmdcXHJlc3VsdGVcXHJlc3VsdGUucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL3BsYW5uaW5nL3Jlc3VsdGUvcmVzdWx0ZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxtQkFQRztFQVFILFlBQUE7QUNERjs7QURJQTtFQUNFLHlCQUFBO0FDREY7O0FESUE7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7QUNERjs7QURJQTtFQUNFLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSwyQkFBQTtFQUNBLDRCQUFBO0FDREY7O0FER0E7RUFDRSxZQUFBO0FDQUY7O0FERUE7RUFDRSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7QUNDRjs7QURDQTtFQUNFLHlCQUFBO0FDRUY7O0FEQUE7RUFDRSx5QkFBQTtBQ0dGOztBRERBO0VBQ0UsWUFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7QUNJRjs7QURGQTtFQUNFLFlBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0FDS0Y7O0FESEE7RUFDRSxlQUFBO0VBQ0EsWUFBQTtBQ01GIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9wbGFubmluZy9yZXN1bHRlL3Jlc3VsdGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGJnOiAjZmZmZmZmO1xuXG4jY29udGFpbmVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICBiYWNrZ3JvdW5kOiAkYmc7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG5pb24tdGl0bGUge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG59XG5cbi5pbWcge1xuICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcbiAgbWF4LXdpZHRoOiAxMDBweCAhaW1wb3J0YW50OyAvL2FueSBzaXplXG4gIG1heC1oZWlnaHQ6IDEwMHB4ICFpbXBvcnRhbnQ7IC8vYW55IHNpemVcbn1cbi5kZXRhaWwge1xuICBoZWlnaHQ6IDUwcHg7XG59XG4uYm94IHtcbiAgd2lkdGg6IDUwJTtcbiAgZmxvYXQ6IGxlZnQ7XG4gIGhlaWdodDogNTBweDtcbn1cbi5sZWZ0IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzM4ODBmZjtcbn1cbi5yaWdodCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyZGQzNmY7XG59XG4ub25lIHtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogMzAlO1xuICBmbG9hdDogbGVmdDtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4udHdvIHtcbiAgaGVpZ2h0OiA1MHB4O1xuICB3aWR0aDogNjAlO1xuICBmbG9hdDogbGVmdDtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5pb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgY29sb3I6IHdoaXRlO1xufVxuIiwiI2NvbnRhaW5lciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZDogI2ZmZmZmZjtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG5pb24tY29udGVudCBpb24tdG9vbGJhciB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNsdWNlbnQ7XG59XG5cbmlvbi10aXRsZSB7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbn1cblxuLmltZyB7XG4gIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogMTAwJSAhaW1wb3J0YW50O1xuICBtYXgtd2lkdGg6IDEwMHB4ICFpbXBvcnRhbnQ7XG4gIG1heC1oZWlnaHQ6IDEwMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5kZXRhaWwge1xuICBoZWlnaHQ6IDUwcHg7XG59XG5cbi5ib3gge1xuICB3aWR0aDogNTAlO1xuICBmbG9hdDogbGVmdDtcbiAgaGVpZ2h0OiA1MHB4O1xufVxuXG4ubGVmdCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzODgwZmY7XG59XG5cbi5yaWdodCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyZGQzNmY7XG59XG5cbi5vbmUge1xuICBoZWlnaHQ6IDUwcHg7XG4gIHdpZHRoOiAzMCU7XG4gIGZsb2F0OiBsZWZ0O1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLnR3byB7XG4gIGhlaWdodDogNTBweDtcbiAgd2lkdGg6IDYwJTtcbiAgZmxvYXQ6IGxlZnQ7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5pb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgY29sb3I6IHdoaXRlO1xufSJdfQ== */";
     /***/
   },
 
@@ -221,14 +221,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var _modals_detail_detail_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../../modals/detail/detail.page */
+    "./src/app/modals/detail/detail.page.ts");
 
     var ResultePage = /*#__PURE__*/function () {
-      function ResultePage(http, loadingCtrl) {
+      function ResultePage(http, loadingCtrl, modalController) {
         _classCallCheck(this, ResultePage);
 
         this.http = http;
         this.loadingCtrl = loadingCtrl;
+        this.modalController = modalController;
         this.list = [];
+        this.place = [];
+        this.placeDistance = [];
       }
 
       _createClass(ResultePage, [{
@@ -241,11 +250,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
+                    _context.next = 2;
+                    return this.modalController.dismiss();
+
+                  case 2:
                     this.list.forEach(function (item, index) {
                       _this.http.removeList(_this.list[index]);
                     });
 
-                  case 1:
+                  case 3:
                   case "end":
                     return _context.stop();
                 }
@@ -275,11 +288,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 5:
                     this.http.list$.subscribe(function (list) {
-                      return _this2.list = list;
+                      _this2.list = list;
                     });
-                    this.loading.dismiss();
+                    this.place = this.list[0];
+                    this.cost = this.list[1];
+                    this.distance = this.list[2];
+                    this.placeDistance = this.list[3];
+                    this.loading.dismiss().then(function (result) {
+                      _this2.closePlan();
+                    });
+                    console.log("ใหม่");
+                    console.log(this.placeDistance);
 
-                  case 7:
+                  case 13:
                   case "end":
                     return _context2.stop();
                 }
@@ -296,6 +317,75 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this3.http.removeList(item);
           });
         }
+      }, {
+        key: "openModal",
+        value: function openModal() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var _this4 = this;
+
+            var modal, _yield$modal$onWillDi, data;
+
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return this.modalController.create({
+                      component: _modals_detail_detail_page__WEBPACK_IMPORTED_MODULE_4__["DetailPage"]
+                    });
+
+                  case 2:
+                    modal = _context3.sent;
+                    _context3.next = 5;
+                    return modal.present();
+
+                  case 5:
+                    _context3.next = 7;
+                    return modal.onWillDismiss();
+
+                  case 7:
+                    _yield$modal$onWillDi = _context3.sent;
+                    data = _yield$modal$onWillDi.data;
+
+                    if (data.dismissed) {
+                      this.list.forEach(function (item) {
+                        _this4.http.removeList(item);
+                      });
+                    }
+
+                    console.log(this.place);
+
+                  case 11:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
+        }
+      }, {
+        key: "addItem",
+        value: function addItem(item) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    this.http.addNewList(item);
+
+                  case 1:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this);
+          }));
+        }
+      }, {
+        key: "addItemLast",
+        value: function addItemLast() {
+          this.http.addNewList(this.place);
+        }
       }]);
 
       return ResultePage;
@@ -306,6 +396,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _services_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
       }];
     };
 

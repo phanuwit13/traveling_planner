@@ -261,6 +261,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.placeNo = [];
         this.distance = "";
         this.lastNameFile = [];
+        this.other = {
+          categoryNo: 8,
+          categoryTH: "อื่นๆ"
+        };
         this.fileName = null;
         this.selectedFile = null;
         this.key = "";
@@ -488,7 +492,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
             }, _callee4, this);
           }));
-        }
+        } // async getCategory() {
+        //   let httpRespon: any = await this.http.post("getCategory");
+        //   //console.log(httpRespon);
+        //   if (httpRespon.response.success) {
+        //     this.categoryData = await httpRespon.response.data;
+        //   } else {
+        //     this.categoryData = null;
+        //   }
+        // }
+
       }, {
         key: "getCategory",
         value: function getCategory() {
@@ -505,7 +518,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     httpRespon = _context5.sent;
 
                     if (!httpRespon.response.success) {
-                      _context5.next = 9;
+                      _context5.next = 11;
                       break;
                     }
 
@@ -514,13 +527,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 6:
                     this.categoryData = _context5.sent;
-                    _context5.next = 10;
+                    this.categoryData = this.categoryData.filter(function (item) {
+                      return item.categoryNo != 8;
+                    });
+                    this.categoryData.push(this.other);
+                    _context5.next = 12;
                     break;
 
-                  case 9:
+                  case 11:
                     this.categoryData = null;
 
-                  case 10:
+                  case 12:
+                    console.log(this.categoryData);
+
+                  case 13:
                   case "end":
                     return _context5.stop();
                 }

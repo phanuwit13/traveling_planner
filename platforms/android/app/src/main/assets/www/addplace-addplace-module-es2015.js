@@ -144,6 +144,7 @@ let AddplacePage = class AddplacePage {
         this.placeNo = [];
         this.distance = "";
         this.lastNameFile = [];
+        this.other = { categoryNo: 8, categoryTH: "อื่นๆ" };
         this.fileName = null;
         this.selectedFile = null;
         this.key = "";
@@ -258,16 +259,30 @@ let AddplacePage = class AddplacePage {
             }));
         });
     }
+    // async getCategory() {
+    //   let httpRespon: any = await this.http.post("getCategory");
+    //   //console.log(httpRespon);
+    //   if (httpRespon.response.success) {
+    //     this.categoryData = await httpRespon.response.data;
+    //   } else {
+    //     this.categoryData = null;
+    //   }
+    // }
     getCategory() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             let httpRespon = yield this.http.post("getCategory");
             //console.log(httpRespon);
             if (httpRespon.response.success) {
                 this.categoryData = yield httpRespon.response.data;
+                this.categoryData = this.categoryData.filter((item) => {
+                    return item.categoryNo != 8;
+                });
+                this.categoryData.push(this.other);
             }
             else {
                 this.categoryData = null;
             }
+            console.log(this.categoryData);
         });
     }
     setPath() {

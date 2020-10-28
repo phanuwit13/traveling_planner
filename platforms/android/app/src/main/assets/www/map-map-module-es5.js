@@ -383,10 +383,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   this.routPath(this.currentLocation);
                                 }
 
+                                console.log(this.list);
                                 this.map.setCenter(this.currentLocation);
                                 this.loading.dismiss();
 
-                              case 6:
+                              case 7:
                               case "end":
                                 return _context4.stop();
                             }
@@ -439,7 +440,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               lng: parseFloat(this.list[0][n - 1].longitude)
             },
             waypoints: waypts,
-            optimizeWaypoints: true,
+            optimizeWaypoints: false,
             travelMode: "DRIVING"
           }, function (response, status) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this4, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {

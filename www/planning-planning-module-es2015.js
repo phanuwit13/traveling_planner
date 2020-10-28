@@ -124,17 +124,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../services/http.service */ "./src/app/services/http.service.ts");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
 
 
 let PlanningPage = class PlanningPage {
-    constructor(http, formBuilder) {
+    constructor(http, formBuilder, loadingCtrl) {
         this.http = http;
         this.formBuilder = formBuilder;
+        this.loadingCtrl = loadingCtrl;
         this.placeData = null;
         this.categoryData = null;
         this.no = [];
@@ -142,7 +145,9 @@ let PlanningPage = class PlanningPage {
         this.distance = [];
         this.point_start = [];
         this.placeToGo = [];
+        this.other = { categoryNo: 8, categoryTH: "อื่นๆ" };
         this.list = [];
+        this.placeDistance = [];
         this.cost = 0;
         this.sumDistance = 0;
     }
@@ -170,7 +175,7 @@ let PlanningPage = class PlanningPage {
                 if (this.form_planning.controls["placeNo"].value.placeNo ==
                     this.form_planning.controls["point_start"].value.placeNo) {
                     check = 1;
-                    yield sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
+                    yield sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
                     return;
                 }
                 else {
@@ -182,7 +187,7 @@ let PlanningPage = class PlanningPage {
                         this.no.forEach((item) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                             if (item == this.form_planning.controls["placeNo"].value) {
                                 check = 1;
-                                yield sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
+                                yield sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
                                 return;
                             }
                         }));
@@ -194,8 +199,12 @@ let PlanningPage = class PlanningPage {
                 }
             }
             else {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("เลือกได้สูงสุด 8 สถานที่ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("เลือกได้สูงสุด 8 สถานที่ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
             }
+            console.log("สถานที่ทั้งหมด");
+            console.log(this.no);
+            console.log("สถานที่ ที่จะไป");
+            console.log(this.placeToGo);
         });
     }
     delPlace(value) {
@@ -249,14 +258,23 @@ let PlanningPage = class PlanningPage {
             //console.log(httpRespon);
             if (httpRespon.response.success) {
                 this.categoryData = yield httpRespon.response.data;
+                this.categoryData = this.categoryData.filter((item) => {
+                    return item.categoryNo != 8;
+                });
+                this.categoryData.push(this.other);
             }
             else {
                 this.categoryData = null;
             }
+            console.log(this.categoryData);
         });
     }
     testSort() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.loading = yield this.loadingCtrl.create({
+                message: "Please wait...",
+            });
+            yield this.loading.present();
             this.point_start = this.form_planning.controls["point_start"].value.placeNo;
             this.noSort.push(this.form_planning.controls["point_start"].value);
             for (let i = 0; i < this.no.length; i++) {
@@ -268,8 +286,10 @@ let PlanningPage = class PlanningPage {
             this.sumDistance = this.sumDistance / 1000;
             yield this.addItem(this.noSort);
             yield this.addItem(this.cost);
-            this.addItem(this.sumDistance.toFixed(2));
+            yield this.addItem(this.sumDistance.toFixed(2));
+            yield this.addItem(this.placeDistance);
             this.clearData();
+            this.loading.dismiss();
         });
     }
     loopPlace(start) {
@@ -281,6 +301,7 @@ let PlanningPage = class PlanningPage {
                         this.distance[i].distance != "0") {
                         this.cost += parseInt(this.distance[i].fare);
                         this.sumDistance += parseFloat(this.distance[i].distance);
+                        this.placeDistance.push((parseFloat(this.distance[i].distance) / 1000).toFixed(2));
                         console.log(this.sumDistance);
                         this.noSort.push(this.placeToGo[j]);
                         this.point_start = yield this.placeToGo[j].placeNo;
@@ -301,12 +322,15 @@ let PlanningPage = class PlanningPage {
             //console.log(httpRespon);
             if (httpRespon.response.success) {
                 this.distance = httpRespon.response.data;
+                console.log("ก่อนเรียง");
+                console.log(this.distance);
             }
             else {
                 this.distance = null;
             }
             this.distance.sort((a, b) => parseFloat(a.distance) < parseFloat(b.distance) ? -1 : 0);
-            //console.log(this.distance);
+            console.log("หลังเรียง");
+            console.log(this.distance);
         });
     }
     clearData() {
@@ -321,7 +345,8 @@ let PlanningPage = class PlanningPage {
 };
 PlanningPage.ctorParameters = () => [
     { type: _services_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"] },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] }
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"] }
 ];
 Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["HostListener"])("document:ionBackButton", ["$event"])
