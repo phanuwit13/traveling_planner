@@ -22,6 +22,8 @@ export class AddplacePage implements OnInit {
   public placeStartAll = [];
   public placeEndAll = [];
   public placeNo = [];
+  public baseFare  = 0 
+  public nextFare = 0
   public distance = "";
   public lastNameFile: Array<any> = [];
   public other = { categoryNo: 8, categoryTH: "อื่นๆ" };
@@ -50,7 +52,7 @@ export class AddplacePage implements OnInit {
       latitude: ["", Validators.required],
       longitude: ["", Validators.required],
     });
-
+    this.getFare()
     this.getCategory();
     this.loadMap();
   }
@@ -169,15 +171,19 @@ export class AddplacePage implements OnInit {
       }
     });
   }
-  // async getCategory() {
-  //   let httpRespon: any = await this.http.post("getCategory");
-  //   //console.log(httpRespon);
-  //   if (httpRespon.response.success) {
-  //     this.categoryData = await httpRespon.response.data;
-  //   } else {
-  //     this.categoryData = null;
-  //   }
-  // }
+  async getFare () {
+    let httpRespon: any = await this.http.post("getFare");
+    console.log(httpRespon.response.data);
+    if (httpRespon.response.success) {
+      this.baseFare = parseFloat( httpRespon.response.data[0].baseFare);
+      this.nextFare = parseFloat( httpRespon.response.data[0].nextFare);
+    } else {
+      this.baseFare = 0
+      this.nextFare = 0
+    }
+    console.log(this.baseFare +" : "+this.nextFare);
+    
+  }
 
   async getCategory() {
     let httpRespon: any = await this.http.post("getCategory");
@@ -324,7 +330,7 @@ export class AddplacePage implements OnInit {
             //console.log(item.elements[0].distance);
             let formData = new FormData();
             let fare: number = await Math.ceil(
-              (item.elements[0].distance.value * 6) / 1000 + 52.5
+              (item.elements[0].distance.value * this.nextFare) / 1000 + this.baseFare
             );
             formData.append("firstPath", placeNo[index]);
             formData.append(

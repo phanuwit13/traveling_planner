@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [routerLink]="['/home/admin/homeadmin']"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Update Fare</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content mode="ios" [fullscreen]="false">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Base Fare</ion-card-subtitle>
+      <!-- <ion-card-title>Card Title</ion-card-title> -->
+    </ion-card-header>
+
+    <ion-card-content class="form-style-5">
+      <form [formGroup]="formInput">
+        <fieldset>
+          <legend><span class="number"></span>ค่าโดยสารเริ่มต้น</legend>
+          <ion-list lines="full" class="ion-no-margin">
+            <ion-item>
+              <ion-input
+                type="text"
+                formControlName="baseFare"
+                [disabled]="disableTime.start"
+                value="{{baseFare}}"
+                name="field1"
+                placeholder="Base Fare *"
+              >
+              </ion-input></ion-item
+          ></ion-list>
+        </fieldset>
+      </form>
+    </ion-card-content>
+    <ion-footer>
+      <ion-button
+        *ngIf="!disableBtn.start"
+        size="default"
+        (click)="editTime('start')"
+        class="edit"
+        color="warning"
+      >
+        แก้ไข
+      </ion-button>
+      <ion-button
+        *ngIf="disableBtn.start"
+        size="default"
+        (click)="setBaseFare()"
+        class="save"
+        color="primary"
+      >
+        บันทึก
+      </ion-button>
+      <ion-button
+        *ngIf="disableBtn.start"
+        size="default"
+        (click)="canseltimeSet('start')"
+        class="cansel"
+        color="danger"
+      >
+        ยกเลิก
+      </ion-button></ion-footer
+    >
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Next Fare</ion-card-subtitle>
+      <!-- <ion-card-title>Card Title</ion-card-title> -->
+    </ion-card-header>
+
+    <ion-card-content class="form-style-5">
+      <form [formGroup]="formInput">
+        <fieldset>
+          <legend><span class="number"></span>กิโลเมตรถัดไป</legend>
+          <ion-list lines="full" class="ion-no-margin">
+            <ion-item>
+              <ion-input
+                type="text"
+                formControlName="nextFare"
+                [disabled]="disableTime.end"
+                value="{{nextFare}}"
+                name="field1"
+                placeholder="Next Fare *"
+              ></ion-input
+            ></ion-item>
+          </ion-list>
+        </fieldset>
+      </form>
+    </ion-card-content>
+    <ion-footer>
+      <ion-button
+        *ngIf="!disableBtn.end"
+        size="default"
+        (click)="editTime('end')"
+        class="edit"
+        color="warning"
+      >
+        แก้ไข
+      </ion-button>
+      <ion-button
+        *ngIf="disableBtn.end"
+        size="default"
+        (click)="setNextFare()"
+        class="save"
+        color="primary"
+      >
+        บันทึก
+      </ion-button>
+      <ion-button
+        *ngIf="disableBtn.end"
+        size="default"
+        (click)="canseltimeSet('end')"
+        class="cansel"
+        color="danger"
+      >
+        ยกเลิก
+      </ion-button></ion-footer
+    >
+  </ion-card>
+</ion-content>
+
+<ion-footer> </ion-footer>

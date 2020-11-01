@@ -235,20 +235,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! sweetalert2 */
     "./node_modules/sweetalert2/dist/sweetalert2.all.js");
     /* harmony import */
 
 
-    var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+    var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
 
     var PlanningPage = /*#__PURE__*/function () {
-      function PlanningPage(http, formBuilder) {
+      function PlanningPage(http, formBuilder, loadingCtrl) {
         _classCallCheck(this, PlanningPage);
 
         this.http = http;
         this.formBuilder = formBuilder;
+        this.loadingCtrl = loadingCtrl;
         this.placeData = null;
         this.categoryData = null;
         this.no = [];
@@ -256,7 +263,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.distance = [];
         this.point_start = [];
         this.placeToGo = [];
+        this.other = {
+          categoryNo: 8,
+          categoryTH: "อื่นๆ"
+        };
         this.list = [];
+        this.placeDistance = [];
         this.cost = 0;
         this.sumDistance = 0;
       }
@@ -333,7 +345,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     check = 1;
                     _context4.next = 6;
-                    return sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
+                    return sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
 
                   case 6:
                     return _context4.abrupt("return");
@@ -349,19 +361,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             while (1) {
                               switch (_context3.prev = _context3.next) {
                                 case 0:
-                                  if (!(item == this.form_planning.controls["placeNo"].value)) {
-                                    _context3.next = 5;
+                                  if (!(item.placeNo == this.form_planning.controls["placeNo"].value.placeNo)) {
+                                    _context3.next = 6;
                                     break;
                                   }
 
                                   check = 1;
-                                  _context3.next = 4;
-                                  return sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
-
-                                case 4:
-                                  return _context3.abrupt("return");
+                                  console.log("แก้ใหม่");
+                                  _context3.next = 5;
+                                  return sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
 
                                 case 5:
+                                  return _context3.abrupt("return");
+
+                                case 6:
                                 case "end":
                                   return _context3.stop();
                               }
@@ -381,9 +394,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     break;
 
                   case 12:
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire("เลือกได้สูงสุด 8 สถานที่ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("เลือกได้สูงสุด 8 สถานที่ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
 
                   case 13:
+                    console.log("สถานที่ทั้งหมด");
+                    console.log(this.no);
+                    console.log("สถานที่ ที่จะไป");
+                    console.log(this.placeToGo);
+
+                  case 17:
                   case "end":
                     return _context4.stop();
                 }
@@ -526,7 +545,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     httpRespon = _context8.sent;
 
                     if (!httpRespon.response.success) {
-                      _context8.next = 9;
+                      _context8.next = 11;
                       break;
                     }
 
@@ -535,13 +554,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 6:
                     this.categoryData = _context8.sent;
-                    _context8.next = 10;
+                    this.categoryData = this.categoryData.filter(function (item) {
+                      return item.categoryNo != 8;
+                    });
+                    this.categoryData.push(this.other);
+                    _context8.next = 12;
                     break;
 
-                  case 9:
+                  case 11:
                     this.categoryData = null;
 
-                  case 10:
+                  case 12:
+                    console.log(this.categoryData);
+
+                  case 13:
                   case "end":
                     return _context8.stop();
                 }
@@ -558,40 +584,59 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context9.prev = _context9.next) {
                   case 0:
+                    _context9.next = 2;
+                    return this.loadingCtrl.create({
+                      message: "Please wait..."
+                    });
+
+                  case 2:
+                    this.loading = _context9.sent;
+                    _context9.next = 5;
+                    return this.loading.present();
+
+                  case 5:
                     this.point_start = this.form_planning.controls["point_start"].value.placeNo;
                     this.noSort.push(this.form_planning.controls["point_start"].value);
                     i = 0;
 
-                  case 3:
+                  case 8:
                     if (!(i < this.no.length)) {
-                      _context9.next = 9;
+                      _context9.next = 14;
                       break;
                     }
 
-                    _context9.next = 6;
+                    _context9.next = 11;
                     return this.loopPlace(this.point_start);
 
-                  case 6:
+                  case 11:
                     i++;
-                    _context9.next = 3;
+                    _context9.next = 8;
                     break;
 
-                  case 9:
+                  case 14:
                     //console.log(this.cost);
                     this.http.navRouter("/home/planning/resulte");
                     this.sumDistance = this.sumDistance / 1000;
-                    _context9.next = 13;
+                    _context9.next = 18;
                     return this.addItem(this.noSort);
 
-                  case 13:
-                    _context9.next = 15;
+                  case 18:
+                    _context9.next = 20;
                     return this.addItem(this.cost);
 
-                  case 15:
-                    this.addItem(this.sumDistance.toFixed(2));
-                    this.clearData();
+                  case 20:
+                    _context9.next = 22;
+                    return this.addItem(this.sumDistance.toFixed(2));
 
-                  case 17:
+                  case 22:
+                    _context9.next = 24;
+                    return this.addItem(this.placeDistance);
+
+                  case 24:
+                    this.clearData();
+                    this.loading.dismiss();
+
+                  case 26:
                   case "end":
                     return _context9.stop();
                 }
@@ -616,7 +661,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 3:
                     if (!(i < this.distance.length)) {
-                      _context10.next = 23;
+                      _context10.next = 24;
                       break;
                     }
 
@@ -624,39 +669,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 5:
                     if (!(j < this.placeToGo.length)) {
-                      _context10.next = 20;
+                      _context10.next = 21;
                       break;
                     }
 
                     if (!(this.distance[i].endPath == this.placeToGo[j].placeNo && this.distance[i].distance != "0")) {
-                      _context10.next = 17;
+                      _context10.next = 18;
                       break;
                     }
 
                     this.cost += parseInt(this.distance[i].fare);
                     this.sumDistance += parseFloat(this.distance[i].distance);
+                    this.placeDistance.push((parseFloat(this.distance[i].distance) / 1000).toFixed(2));
                     console.log(this.sumDistance);
                     this.noSort.push(this.placeToGo[j]);
-                    _context10.next = 13;
+                    _context10.next = 14;
                     return this.placeToGo[j].placeNo;
 
-                  case 13:
+                  case 14:
                     this.point_start = _context10.sent;
                     this.placeToGo.splice(j, 1);
                     i = this.distance.length + 1;
-                    return _context10.abrupt("break", 20);
+                    return _context10.abrupt("break", 21);
 
-                  case 17:
+                  case 18:
                     j++;
                     _context10.next = 5;
                     break;
 
-                  case 20:
+                  case 21:
                     i++;
                     _context10.next = 3;
                     break;
 
-                  case 23:
+                  case 24:
                   case "end":
                     return _context10.stop();
                 }
@@ -685,15 +731,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     //console.log(httpRespon);
                     if (httpRespon.response.success) {
                       this.distance = httpRespon.response.data;
+                      console.log("ก่อนเรียง");
+                      console.log(this.distance);
                     } else {
                       this.distance = null;
                     }
 
                     this.distance.sort(function (a, b) {
                       return parseFloat(a.distance) < parseFloat(b.distance) ? -1 : 0;
-                    }); //console.log(this.distance);
+                    });
+                    console.log("หลังเรียง");
+                    console.log(this.distance);
 
-                  case 7:
+                  case 9:
                   case "end":
                     return _context11.stop();
                 }
@@ -722,6 +772,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _services_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"]
       }, {
         type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"]
       }];
     };
 

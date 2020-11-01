@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'addcategory',
     loadChildren: () => import('./addcategory/addcategory.module').then( m => m.AddcategoryPageModule)
   },
+  {
+    path: 'updatefare',
+    loadChildren: () => import('./updatefare/updatefare.module').then( m => m.UpdatefarePageModule)
+  },
 ];
 
 @NgModule({

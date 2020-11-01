@@ -361,19 +361,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             while (1) {
                               switch (_context3.prev = _context3.next) {
                                 case 0:
-                                  if (!(item == this.form_planning.controls["placeNo"].value)) {
-                                    _context3.next = 5;
+                                  if (!(item.placeNo == this.form_planning.controls["placeNo"].value.placeNo)) {
+                                    _context3.next = 6;
                                     break;
                                   }
 
                                   check = 1;
-                                  _context3.next = 4;
+                                  console.log("แก้ใหม่");
+                                  _context3.next = 5;
                                   return sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
 
-                                case 4:
+                                case 5:
                                   return _context3.abrupt("return");
 
-                                case 5:
+                                case 6:
                                 case "end":
                                   return _context3.stop();
                               }

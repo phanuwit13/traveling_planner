@@ -147,6 +147,7 @@ let HomeadminPage = class HomeadminPage {
         this.place = null;
         this.key = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]();
         this.categoryData = null;
+        this.other = { categoryNo: 8, categoryTH: "อื่นๆ" };
         this.list = [];
     }
     overrideHardwareBackAction($event) {
@@ -201,6 +202,7 @@ let HomeadminPage = class HomeadminPage {
         setTimeout(() => {
             //console.log("Async operation has ended");
             this.getPlace();
+            this.getCategory();
             event.target.complete();
         }, 1000);
         this.place = null;
@@ -246,6 +248,10 @@ let HomeadminPage = class HomeadminPage {
             //console.log(httpRespon);
             if (httpRespon.response.success) {
                 this.categoryData = yield httpRespon.response.data;
+                this.categoryData = this.categoryData.filter((item) => {
+                    return item.categoryNo != 8;
+                });
+                this.categoryData.push(this.other);
             }
             else {
                 this.categoryData = null;

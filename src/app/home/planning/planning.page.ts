@@ -19,6 +19,7 @@ export class PlanningPage implements OnInit {
   public distance: Array<any> = [];
   public point_start: Array<any> = [];
   public placeToGo: Array<any> = [];
+  public placeSus = ""
   public other = { categoryNo: 8, categoryTH: "อื่นๆ" };
   list = [];
   placeDistance = [];
@@ -62,8 +63,10 @@ export class PlanningPage implements OnInit {
           this.placeToGo.push(this.form_planning.controls["placeNo"].value);
         } else {
           this.no.forEach(async (item) => {
-            if (item == this.form_planning.controls["placeNo"].value) {
+            if (item.placeNo == this.form_planning.controls["placeNo"].value.placeNo) {
               check = 1;
+              console.log("แก้ใหม่");
+              
               await Swal.fire(
                 "คุณเลือกสถานที่ซ้ำ !",
                 "กรุณาตรวจสอบสถานที่ท่องเที่ยว",
@@ -183,6 +186,7 @@ export class PlanningPage implements OnInit {
           this.placeDistance.push((parseFloat(this.distance[i].distance)/1000).toFixed(2));
           console.log(this.sumDistance);
           this.noSort.push(this.placeToGo[j]);
+          this.placeSus+=this.placeToGo[j]+","
           this.point_start = await this.placeToGo[j].placeNo;
           this.placeToGo.splice(j, 1);
           i = this.distance.length + 1;
@@ -194,23 +198,23 @@ export class PlanningPage implements OnInit {
 
   async calculateDistance(firstPath: string) {
     let formData = new FormData();
+    // var json_arr = JSON.stringify(this.placeSus);
     formData.append("firstPath", firstPath);
-    //formData.append("endPath", endPath);
+    formData.append("placeSus", this.placeSus);
     let httpRespon: any = await this.http.post("getPathSelectOne", formData);
     //console.log(httpRespon);
     if (httpRespon.response.success) {
       this.distance = httpRespon.response.data;
-      console.log("ก่อนเรียง");
       console.log(this.distance);
     } else {
       this.distance = null;
     }
 
-    this.distance.sort((a: any, b: any) =>
-      parseFloat(a.distance) < parseFloat(b.distance) ? -1 : 0
-    );
-    console.log("หลังเรียง");
-    console.log(this.distance);
+    // this.distance.sort((a: any, b: any) =>
+    //   parseFloat(a.distance) < parseFloat(b.distance) ? -1 : 0
+    // );
+    // console.log("หลังเรียง");
+    // console.log(this.distance);
   }
   clearData() {
     this.no = [];

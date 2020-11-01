@@ -185,8 +185,9 @@ let PlanningPage = class PlanningPage {
                     }
                     else {
                         this.no.forEach((item) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                            if (item == this.form_planning.controls["placeNo"].value) {
+                            if (item.placeNo == this.form_planning.controls["placeNo"].value.placeNo) {
                                 check = 1;
+                                console.log("แก้ใหม่");
                                 yield sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire("คุณเลือกสถานที่ซ้ำ !", "กรุณาตรวจสอบสถานที่ท่องเที่ยว", "warning");
                                 return;
                             }
